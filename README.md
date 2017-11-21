@@ -1,3 +1,3 @@
 # sample9a
 
-[asdasdasds](/lib)
+[aaaaaa](/lib)
