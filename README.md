@@ -1,6 +1,1 @@
-# sample9a
-
-[aaaaaa](/lib)
-
-
-dsads
+# gradle-sample 1

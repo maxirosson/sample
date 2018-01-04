@@ -1,0 +1,15 @@
+apply plugin: 'application'
+mainClassName = 'Main'
+
+dependencies {
+	compile project(':core')
+	compile "com.google.guava:guava:18.0"
+}
+
+task hello << {
+	println 'Hello task'
+}
+
+task intro(dependsOn: hello) << {
+	println "I'm Gradle"
+}
