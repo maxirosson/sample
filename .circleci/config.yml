@@ -41,7 +41,9 @@ jobs:
       - store_test_results:
           path: ~/junit
       - store_artifacts:
-          path: ~/junit
+          path: ./core/build/reports/tests
+      - store_artifacts:
+          path: ./app/build/reports/tests
           
   verify:
     <<: *defaults
