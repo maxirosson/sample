@@ -52,7 +52,7 @@ jobs:
       - checkout
       - run: gradle test
       - store_artifacts:
-        path: ./core/build/reports/tests
+          path: ./core/build/reports/tests
 workflows:
   version: 2
   build_and_test:
