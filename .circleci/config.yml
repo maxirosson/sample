@@ -41,8 +41,15 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-      - run: echo "Checking code quality ......."
+      - run: echo "Checking code quality on each commit......."
 
+  verify_nightly:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - run: echo "Checking code quality on nightly......."
+      
   deploy:
     docker:
       - image: circleci/openjdk:8-jdk
@@ -52,7 +59,7 @@ jobs:
   
 workflows:
   version: 2
-  all:
+  commit:
     jobs:
       - build
       - test:
@@ -65,3 +72,13 @@ workflows:
           requires:
             - test
             - verify
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - verify_nightly
