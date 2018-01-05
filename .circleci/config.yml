@@ -32,6 +32,8 @@ jobs:
     steps:
       - checkout
       - run: gradle test
+      - store_test_results:
+          path: ./core/build/test-results
       - store_artifacts:
           path: ./core/build/reports/tests
           
