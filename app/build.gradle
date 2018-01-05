@@ -4,6 +4,7 @@ mainClassName = 'Main'
 dependencies {
 	compile project(':core')
 	compile "com.google.guava:guava:18.0"
+	testCompile 'junit:junit:4.0'
 }
 
 task hello << {
