@@ -1,1 +1,1 @@
-# gradle-sample
+# gradle sample
