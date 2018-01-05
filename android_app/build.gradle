@@ -1,0 +1,23 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.3.3'
+	}
+}
+
+android {
+	compileSdkVersion 27
+	buildToolsVersion "26.0.2"
+
+	defaultConfig {
+		applicationId "com.sample"
+		targetSdkVersion 25
+		minSdkVersion 16
+		versionCode 1
+		versionName "1"
+	}
+}

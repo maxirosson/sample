@@ -1,2 +1,3 @@
-include ':app'
+include ':android_app'
+include ':desktop_app'
 include ':core'
