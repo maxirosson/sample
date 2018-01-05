@@ -72,6 +72,11 @@ workflows:
           requires:
             - test
             - verify
+          filters:
+            branches:
+              only:
+                - master
+                - production
   nightly:
     triggers:
       - schedule:
