@@ -5,6 +5,7 @@ defaults: &defaults
     - image: circleci/android:api-27-alpha
   environment:
     JVM_OPTS: -Xmx3200m
+    GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.caching=true
 version: 2
 jobs:
   build:
@@ -17,7 +18,7 @@ jobs:
           keys:
             - jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
-      - run: cat $HOME/.gradle/gradle.properties
+      #- run: cat $HOME/.gradle/gradle.properties
       - run: ./gradlew assemble --stacktrace
             
       - save_cache:
