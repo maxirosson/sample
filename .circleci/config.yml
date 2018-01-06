@@ -96,4 +96,6 @@ workflows:
               only:
                 - master
     jobs:
-      - verify_nightly
+      - verify_nightly:
+          requires:
+            - build
