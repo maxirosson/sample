@@ -25,6 +25,7 @@ jobs:
           command: |
             ./gradlew :app:androidDependencies
             ./gradlew dependencies
+            
       - save_cache:
           paths:
             - ~/.gradle
