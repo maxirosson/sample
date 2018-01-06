@@ -1,11 +1,10 @@
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/openjdk:8-jdk
+    #- image: circleci/openjdk:8-jdk
+    - image: circleci/android:api-27-alpha
   environment:
-    # Customize the JVM maximum heap limit
     JVM_OPTS: -Xmx3200m
-    TERM: dumb
 version: 2
 jobs:
   build:
@@ -16,22 +15,27 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "build.gradle" }}
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: gradle dependencies
-      - run: gradle assemble
+      - run:
+          name: Download Dependencies
+          command: ./gradlew :app:androidDependencies
+          command: ./gradlew dependencies
       - save_cache:
           paths:
             - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+          key: key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+      - run: ./gradlew assemble
+
 
   test:
     <<: *defaults
     steps:
       - checkout
-      - run: gradle test
+      - run: ./gradlew test
       - run:
           name: Save test results 
           command: |
@@ -49,7 +53,7 @@ jobs:
     <<: *defaults
     steps:
       - checkout
-      - run: echo "Checking code quality on each commit......."
+      - run: ./gradlew :app:lint
 
   verify_nightly:
     <<: *defaults
