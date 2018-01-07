@@ -113,6 +113,7 @@ workflows:
               only:
                 - master
     jobs:
+      - build
       - verify_nightly:
           requires:
             - build
