@@ -1,1 +1,1 @@
-# Gradle Sample v2.0.1
+# Gradle Sample v3.0.0
