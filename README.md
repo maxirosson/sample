@@ -1,5 +1,1 @@
-# sample9
-
-[asdasdasdas](/lib)
-
-lllllll
+# Gradle Sample
