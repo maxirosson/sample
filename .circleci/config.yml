@@ -48,7 +48,9 @@ jobs:
       - persist_to_workspace:
           root: *workspace
           paths:
+            - app/build
             - core/build
+            - build
       - run:
           name: Save apks
           command: |
@@ -81,6 +83,13 @@ jobs:
             cd core/build
             ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
             cd ..
+            cd ..
+            cd app/build
+            ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+            cd ..
+            cd ..
+            cd build
+            ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
             cd ..
 
       - run: ./gradlew test --stacktrace
