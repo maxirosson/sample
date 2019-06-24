@@ -1,26 +1,11 @@
-ext.VERSION_TIMESTAMP_ENABLED = true
-apply plugin: 'com.jdroid.java.library'
+apply plugin: 'java'
 
 dependencies {
 	testCompile 'junit:junit:4.0'
 }
 
 buildscript {
-
 	repositories {
 		jcenter()
-		String localMavenRepo = project.hasProperty('LOCAL_MAVEN_REPO') ? project.ext.get('LOCAL_MAVEN_REPO') : System.getenv('LOCAL_MAVEN_REPO')
-		if (localMavenRepo != null) {
-			maven { url localMavenRepo }
-		}
 	}
-
-	dependencies {
-		classpath 'com.jdroidframework:jdroid-gradle-java-plugin:0.19.0-SNAPSHOT'
-	}
-}
-
-jdroid {
-	gitHubRepositoryOwner = 'maxirosson'
-	gitHubRepositoryName = 'sample'
 }

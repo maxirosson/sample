@@ -7,10 +7,14 @@ dependencies {
 	testCompile 'junit:junit:4.0'
 }
 
-task hello << {
-	println 'Hello task'
+task hello {
+	doLast {
+		println 'Hello task'
+	}
 }
 
-task intro(dependsOn: hello) << {
-	println "I'm Gradle"
+task intro(dependsOn: hello) {
+	doLast {
+		println "I'm Gradle"
+	}
 }
