@@ -82,6 +82,7 @@ jobs:
           command: |
             cd core/build
             ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
+            ls -R
             cd ..
             cd ..
             cd app/build
