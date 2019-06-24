@@ -46,7 +46,7 @@ jobs:
       - run: ./gradlew assemble --stacktrace
 
 	  - persist_to_workspace:
-		  root: *workspace
+	      root: *workspace
 		  paths:
             - core/build
       - run:
