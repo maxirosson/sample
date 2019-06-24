@@ -65,6 +65,12 @@ jobs:
     steps:
       - checkout
       - *restore_cache
+      
+      - run:
+          name: Ls
+          command: |
+            cd core
+            ls
 
       - attach_workspace:
           at: *workspace
@@ -73,7 +79,7 @@ jobs:
           name: Ls
           command: |
             cd core/build
-            ls
+            ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
             cd ..
             cd ..
 
