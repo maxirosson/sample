@@ -70,12 +70,12 @@ jobs:
           at: *workspace
 
       - run:
-        name: Ls
-        command: |
-          cd core/build
-          ls
-          cd ..
-          cd ..
+          name: Ls
+          command: |
+            cd core/build
+            ls
+            cd ..
+            cd ..
 
       - run: ./gradlew test --stacktrace
       
