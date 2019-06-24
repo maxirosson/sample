@@ -71,11 +71,11 @@ jobs:
 
       - run:
         name: Ls
-		command: |
-		  cd core/build
-		  ls
-		  cd ..
-		  cd ..
+        command: |
+          cd core/build
+          ls
+          cd ..
+          cd ..
 
       - run: ./gradlew test --stacktrace
       
