@@ -46,8 +46,8 @@ jobs:
       - run: ./gradlew assemble --stacktrace
 
 	  - persist_to_workspace:
-	      root: *workspace
-		  paths:
+          root: *workspace
+          paths:
             - core/build
       - run:
           name: Save apks
