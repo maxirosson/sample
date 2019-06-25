@@ -67,7 +67,7 @@ jobs:
       <<: *android_config
       steps:
         - checkout
-        - run: echo "Hello world"
+        - run: echo "Hello ${PARAM_1}"
 
   hold:
       <<: *android_config
@@ -134,8 +134,4 @@ workflows:
       - build
       - test:
           requires:
-            - hold
-      - hold:
-          type: approval
-          requires:
-           - build
+            - build
