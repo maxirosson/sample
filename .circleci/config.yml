@@ -135,7 +135,7 @@ workflows:
       - test:
           requires:
             - hold
-	  - hold:
-		  type: approval
-		  requires:
-		   - build
+      - hold:
+          type: approval
+          requires:
+           - build
