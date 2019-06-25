@@ -69,6 +69,12 @@ jobs:
         - checkout
         - run: echo "Hello world"
 
+  hold:
+      <<: *android_config
+      steps:
+        - checkout
+        - run: echo "Hello world approved"
+
   test:
     <<: *android_config
     steps:
@@ -128,4 +134,8 @@ workflows:
       - build
       - test:
           requires:
-            - build
+            - hold
+	  - hold:
+		  type: approval
+		  requires:
+		   - build
