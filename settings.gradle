@@ -1,9 +1,9 @@
-buildCache {
-	local {
-		// Set local build cache directory.
-		directory = "${settingsDir}/build-cache"
-	}
-}
+//buildCache {
+//	local {
+//		// Set local build cache directory.
+//		directory = "${settingsDir}/build-cache"
+//	}
+//}
 
 include ':app'
 include ':desktop_app'
