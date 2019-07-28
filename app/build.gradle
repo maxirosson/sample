@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: "com.releaseshub.gradle.plugin"
 
 buildscript {
 	repositories {
@@ -7,6 +8,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.4.1'
+		classpath("com.jdroidtools:releases-hub-gradle-plugin:0.1.0-SNAPSHOT")
 	}
 }
 
@@ -21,4 +23,11 @@ android {
 		versionCode 1
 		versionName "1"
 	}
+}
+
+releasesHub {
+	dependenciesFilesPaths = ["dependencies.gradle"]
+	pullRequestEnabled = false
+	gitHubRepositoryOwner = ""
+	gitHubRepositoryName = ""
 }
