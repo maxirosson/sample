@@ -27,7 +27,7 @@ android {
 
 releasesHub {
 	dependenciesFilesPaths = ["dependencies.gradle"]
-	pullRequestEnabled = false
-	gitHubRepositoryOwner = ""
-	gitHubRepositoryName = ""
+	pullRequestEnabled = true
+	gitHubRepositoryOwner = "maxirosson"
+	gitHubRepositoryName = "sample"
 }
