@@ -6,7 +6,7 @@ libs.play_core = "com.google.android.play:core:9.9.9"
 
 // https://firebase.google.com/support/release-notes/android
 libs.firebase_core = "com.google.firebase:firebase-core:9.9.9"
-libs.firebase_appindexing = "com.google.firebase:firebase-appindexing:1.0.0"
+libs.firebase_appindexing = "com.google.firebase:firebase-appindexing:9.9.9"
 libs.firebase_perf = "com.google.firebase:firebase-perf:9.9.9"
 libs.firebase_dynamic_links = "com.google.firebase:firebase-dynamic-links:9.9.9"
 
