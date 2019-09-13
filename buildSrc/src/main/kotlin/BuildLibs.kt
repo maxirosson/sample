@@ -1,3 +1,3 @@
 object BuildLibs {
-    const val jdroid_component_builder = "com.jdroidtools:jdroid-component-builder:2.1.0"
+    const val jdroid_component_builder = "com.jdroidtools:jdroid-component-builder:2.2.0"
 }
