@@ -8,7 +8,7 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.4.1'
-		classpath("com.jdroidtools:releases-hub-gradle-plugin:0.1.0-SNAPSHOT")
+		classpath("com.releaseshub:releases-hub-gradle-plugin:0.2.0-SNAPSHOT")
 	}
 }
 
@@ -26,8 +26,6 @@ android {
 }
 
 releasesHub {
-	dependenciesFilesPaths = ["dependencies.gradle"]
-	pullRequestEnabled = true
 	gitHubRepositoryOwner = "maxirosson"
 	gitHubRepositoryName = "sample"
 }
