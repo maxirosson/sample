@@ -73,7 +73,7 @@ jobs:
       <<: *android_config
       steps:
         - checkout
-        - run: echo "Hello world approved"
+        - run: echo "Hello world"
 
   upgradeDependencies:
     <<: *android_config
