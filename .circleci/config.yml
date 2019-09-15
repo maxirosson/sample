@@ -36,13 +36,6 @@ jobs:
     <<: *android_config
     steps:
       - checkout
-
-      - *restore_cache
-      - run:
-          name: Download dependencies
-          command: ./gradlew cleanBuildCache androidDependencies --refresh-dependencies --stacktrace
-      - *save_cache
-
       - run: ./gradlew cleanBuildCache assemble --stacktrace
 
   apiJob:
