@@ -45,24 +45,6 @@ jobs:
 
       - run: ./gradlew cleanBuildCache assemble --stacktrace
 
-      - persist_to_workspace:
-          root: *workspace
-          paths:
-            - app/build
-            - core/build
-            - build
-            - build-cache
-      - run:
-          name: Save apks
-          command: |
-            mkdir -p ~/apks/
-            find . -type f -regex ".*/build/outputs/apk/.*apk" -exec cp {} ~/apks/ \;
-          when: always
-      
-      - store_artifacts:
-          path: ~/apks
-          destination: apks
-
   apiJob:
       <<: *android_config
       steps:
