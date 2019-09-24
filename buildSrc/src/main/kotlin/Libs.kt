@@ -1,5 +1,5 @@
 object Libs {
-    const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.40"
+    const val KOTLIN = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50"
     const val ANDROIDX_ROOM_RUNTIME = "androidx.room:room-runtime:2.0.0"
     const val FIREBASE_CORE = "com.google.firebase:firebase-core:1.0.0"
     const val FIREBASE_ANALYTICS = "com.google.firebase:firebase-analytics:1.0.0"
