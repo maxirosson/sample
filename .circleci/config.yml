@@ -36,7 +36,7 @@ jobs:
     <<: *android_config
     steps:
       - checkout
-      - run: echo "Hello"
+      - run: echo "Hello world"
 
   apiJob:
       <<: *android_config
