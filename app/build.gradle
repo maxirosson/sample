@@ -29,5 +29,5 @@ releasesHub {
 	gitHubRepositoryOwner = "maxirosson"
 	gitHubRepositoryName = "sample"
 	pullRequestsMax = 2
-	pullRequestReviewers = ["maxirosson"]
+	pullRequestReviewers = ["jdroid-ci"]
 }
