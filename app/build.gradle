@@ -28,7 +28,7 @@ android {
 releasesHub {
 	gitHubRepositoryOwner = "maxirosson"
 	gitHubRepositoryName = "sample"
-	pullRequestsMax = 2
+	//pullRequestsMax = 2
 	pullRequestReviewers = ["jdroid-ci"]
 	pullRequestLabels = ["dependencies"]
 }
