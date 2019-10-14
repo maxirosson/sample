@@ -30,4 +30,5 @@ releasesHub {
 	gitHubRepositoryName = "sample"
 	pullRequestsMax = 2
 	pullRequestReviewers = ["jdroid-ci"]
+	pullRequestLabels = ["dependencies"]
 }
