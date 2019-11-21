@@ -32,11 +32,17 @@ references:
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.daemon=false -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
 
 jobs:
-  build:
+  buildCore:
     <<: *android_config
     steps:
       - checkout
-      - run: echo "Hello world"
+      - run: ./gradlew :core:assemble
+
+  buildApp:
+    <<: *android_config
+    steps:
+      - checkout
+      - run: ./gradlew :app:assemble
 
   apiJob:
       <<: *android_config
@@ -62,4 +68,7 @@ workflows:
   version: 2
   commit:
     jobs:
-      - build
+      - buildCore
+      - buildApp
+          requires:
+            - buildCore
