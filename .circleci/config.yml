@@ -69,6 +69,6 @@ workflows:
   commit:
     jobs:
       - buildCore
-      - buildApp
+      - buildApp:
           requires:
             - buildCore
