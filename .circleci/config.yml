@@ -52,6 +52,19 @@ jobs:
       - attach_workspace:
           at: ./workspace
       - run: cat ./workspace/bbb/a1.txt
+      - run: echo "hello jobB" > /workspace/bbb/a1.txt
+      - persist_to_workspace:
+          root: .
+          paths:
+            - bbb/a1.txt
+
+  jobC:
+    <<: *android_config
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ./workspace
+      - run: cat ./workspace/bbb/a1.txt
 
 workflows:
   version: 2
@@ -63,3 +76,6 @@ workflows:
           requires:
             - jobA1
             - jobA2
+      - jobC:
+          requires:
+            - jobB
