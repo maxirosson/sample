@@ -20,6 +20,8 @@ references:
       paths:
         - ~/.gradle
         - ~/.m2
+
+  clean_build_cache: &clean_build_cache
     run:
       name: Clean Build Cache
       command: rm -rf ~/.gradle/caches/build-cache-*
@@ -44,8 +46,9 @@ jobs:
       - run:
           name: Download dependencies
           command: ./gradlew dependencies --stacktrace
+      - *clean_build_cache
       - *save_gradle_cache
-      -
+
   buildCore:
     <<: *android_config
     steps:
