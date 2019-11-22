@@ -11,10 +11,10 @@ references:
 
   cache_key: &cache_key
     key: v1-cache-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-  restore_cache: &restore_cache
+  restore_gradle_cache: &restore_gradle_cache
     restore_cache:
       <<: *cache_key
-  save_cache: &save_cache
+  save_gradle_cache: &save_gradle_cache
     save_cache:
       <<: *cache_key
       paths:
@@ -35,6 +35,18 @@ references:
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
 
 jobs:
+
+  gradleCache:
+    <<: *android_config
+    resource_class: large
+    steps:
+      - checkout
+      - *restore_gradle_cache
+      - run:
+          name: Download dependencies
+          command: ./gradlew dependencies --stacktrace
+      - *save_gradle_cache
+      -
   buildCore:
     <<: *android_config
     steps:
@@ -71,7 +83,10 @@ workflows:
   version: 2
   commit:
     jobs:
-      - buildCore
+      - gradleCache
+      - buildCore:
+          requires:
+            - gradleCache
       - buildApp:
           requires:
             - buildCore
