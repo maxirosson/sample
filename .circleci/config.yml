@@ -38,7 +38,6 @@ jobs:
 
   gradleCache:
     <<: *android_config
-    resource_class: large
     steps:
       - checkout
       - *restore_gradle_cache
