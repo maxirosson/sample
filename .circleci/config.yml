@@ -24,6 +24,7 @@ jobs:
     steps:
       - checkout
       - run: pwd
+      - run: ./gradlew clean
       - run: |
           mkdir aaa
           cd aaa
