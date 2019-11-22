@@ -34,6 +34,15 @@ jobs:
           root: ./aaa
           paths:
             - bbb/a1.txt
+      - run: |
+          mkdir ccc
+          cd ccc
+          echo "hello jobA1 inner 1" > a1_inner1.txt
+          echo "hello jobA1 inner 2" > a1_inner2.txt
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ccc
 
   jobA2:
     <<: *android_config
@@ -51,6 +60,7 @@ jobs:
       - run: pwd
       - attach_workspace:
           at: ./workspace
+      - run: find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
       - run: cat ./workspace/bbb/a1.txt
       - run: echo "hello jobB" > ./workspace/bbb/b1.txt
       - persist_to_workspace:
