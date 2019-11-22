@@ -5,90 +5,45 @@ references:
   ## Workspace
 
   workspace: &workspace
-    ~/workspace
-
-  ## Cache
-
-  cache_key: &cache_key
-    key: v1-cache-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
-  restore_gradle_cache: &restore_gradle_cache
-    restore_cache:
-      <<: *cache_key
-  save_gradle_cache: &save_gradle_cache
-    save_cache:
-      <<: *cache_key
-      paths:
-        - ~/.gradle
-        - ~/.m2
-
-  clean_build_cache: &clean_build_cache
-    run:
-      name: Clean Build Cache
-      command: rm -rf ~/.gradle/caches/build-cache-*
+    ~/job_workspace
 
   ## Docker image configurations
 
   android_config: &android_config
     working_directory: *workspace
     docker:
-      - image: circleci/android:api-28
+      - image: circleci/openjdk:8-jdk
     environment:
       JVM_OPTS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
 
 jobs:
 
-  gradleCache:
+  jobA1:
     <<: *android_config
     steps:
       - checkout
-      - *restore_gradle_cache
-      - run:
-          name: Download dependencies
-          command: ./gradlew dependencies --stacktrace
-      - *clean_build_cache
-      - *save_gradle_cache
+      - run: pwd
 
-  buildCore:
+  jobA2:
     <<: *android_config
     steps:
       - checkout
-      - run: ./gradlew :core:assemble
+      - run: pwd
 
-  buildApp:
+  jobB:
     <<: *android_config
     steps:
       - checkout
-      - run: ./gradlew :app:assemble
-
-  apiJob:
-      <<: *android_config
-      steps:
-        - checkout
-        - run: echo "Hello ${PARAM_1}"
-
-  hold:
-      <<: *android_config
-      steps:
-        - checkout
-        - run: echo "Hello world approved"
-
-  upgradeDependencies:
-    <<: *android_config
-    steps:
-      - checkout
-      - run:
-          name: Upgrade Dependencies
-          command: ./gradlew upgradeDependencies -PpullRequestEnabled=true --stacktrace
+      - run: pwd
 
 workflows:
   version: 2
   commit:
     jobs:
-      - gradleCache
-      - buildCore:
+      - jobA1
+      - jobA2
+      - jobB:
           requires:
-            - gradleCache
-      - buildApp:
-          requires:
-            - buildCore
+            - jobA1
+            - jobA2
