@@ -18,3 +18,9 @@ allprojects {
 		}
 	}
 }
+
+if (System.getenv("CI") == "true") {
+	println("ON CI")
+} else {
+	println("NOT CI")
+}
