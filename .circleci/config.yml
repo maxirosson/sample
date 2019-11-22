@@ -10,7 +10,7 @@ references:
   ## Cache
 
   cache_key: &cache_key
-    key: cache-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}-{{ checksum "build.gradle" }}-{{ checksum "core/build.gradle" }}
+    key: v1-cache-{{ checksum "gradle/wrapper/gradle-wrapper.properties" }}
   restore_cache: &restore_cache
     restore_cache:
       <<: *cache_key
@@ -20,6 +20,9 @@ references:
       paths:
         - ~/.gradle
         - ~/.m2
+    run:
+      name: Clean Build Cache
+      command: rm -rf ~/.gradle/caches/build-cache-*
 
   ## Docker image configurations
 
@@ -29,7 +32,7 @@ references:
       - image: circleci/android:api-28
     environment:
       JVM_OPTS: -Xmx3200m
-      GRADLE_OPTS: -Dorg.gradle.caching=false -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
+      GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
 
 jobs:
   buildCore:
@@ -37,17 +40,11 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew :core:assemble
-      - save_cache:
-          key: coreCache
-          paths:
-            - core/build
 
   buildApp:
     <<: *android_config
     steps:
       - checkout
-      - restore_cache:
-          key: coreCache
       - run: ./gradlew :app:assemble
 
   apiJob:
