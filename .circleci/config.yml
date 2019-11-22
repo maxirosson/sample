@@ -37,11 +37,17 @@ jobs:
     steps:
       - checkout
       - run: ./gradlew :core:assemble
+      - save_cache:
+          key: coreCache
+          paths:
+            - core/build
 
   buildApp:
     <<: *android_config
     steps:
       - checkout
+      - restore_cache:
+          key: coreCache
       - run: ./gradlew :app:assemble
 
   apiJob:
