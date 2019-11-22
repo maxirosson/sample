@@ -58,6 +58,10 @@ jobs:
     steps:
       - checkout
       - run: pwd
+      - run: |
+          mkdir ccc
+          cd ccc
+          echo "hello inner 3" > a1_inner3.txt
       - attach_workspace:
           at: ./workspace
       - run: find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
