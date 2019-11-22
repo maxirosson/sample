@@ -54,7 +54,7 @@ jobs:
       - run: cat ./workspace/bbb/a1.txt
       - run: echo "hello jobB" > ./workspace/bbb/a1.txt
       - persist_to_workspace:
-          root: .
+          root: ./workspace
           paths:
             - bbb/a1.txt
 
