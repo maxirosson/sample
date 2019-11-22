@@ -52,7 +52,7 @@ jobs:
       - attach_workspace:
           at: ./workspace
       - run: cat ./workspace/bbb/a1.txt
-      - run: echo "hello jobB" > /workspace/bbb/a1.txt
+      - run: echo "hello jobB" > ./workspace/bbb/a1.txt
       - persist_to_workspace:
           root: .
           paths:
