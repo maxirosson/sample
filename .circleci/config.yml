@@ -24,6 +24,11 @@ jobs:
     steps:
       - checkout
       - run: pwd
+      - run: echo "hello jobA1" > a1.txt
+      - persist_to_workspace:
+          root: .
+          paths:
+            - a1.txt
 
   jobA2:
     <<: *android_config
@@ -36,6 +41,9 @@ jobs:
     steps:
       - checkout
       - run: pwd
+      - attach_workspace:
+          at: ./workspace
+      - run: cat ./workspace/a1.txt
 
 workflows:
   version: 2
