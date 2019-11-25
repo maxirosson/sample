@@ -63,7 +63,6 @@ jobs:
   jobB:
     <<: *android_config
     steps:
-      - checkout
       - run: pwd
       - run: |
           mkdir ccc
@@ -82,7 +81,6 @@ jobs:
   jobC:
     <<: *android_config
     steps:
-      - checkout
       - attach_workspace:
           at: ./workspace
       - run: cat ./workspace/bbb/a1.txt
