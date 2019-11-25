@@ -44,6 +44,13 @@ jobs:
           root: .
           paths:
             - ccc
+      - run:
+          name: Remove .git dir
+          command: rm -RF .git
+      - persist_to_workspace:
+          root: *workspace
+          paths:
+            - .
 
   jobA2:
     <<: *android_config
