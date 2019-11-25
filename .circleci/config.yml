@@ -46,7 +46,7 @@ jobs:
             - ccc
       - run:
           name: Remove .git dir
-          command: rm -RF .git
+          command: rm -rf .git
       - persist_to_workspace:
           root: *workspace
           paths:
