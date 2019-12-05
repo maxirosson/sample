@@ -33,7 +33,7 @@ jobs:
       - persist_to_workspace:
           root: ./aaa
           paths:
-            - bbb/a1.txt
+            - ${CIRCLE_BRANCH}/a1.txt
       - run: |
           mkdir ccc
           cd ccc
