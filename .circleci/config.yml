@@ -33,16 +33,16 @@ jobs:
       - persist_to_workspace:
           root: ./aaa
           paths:
-            - ${CIRCLE_BRANCH}/a1.txt
+            - bbb/a1.txt
       - run: |
-          mkdir ccc
-          cd ccc
+          mkdir ${CIRCLE_BRANCH}
+          cd ${CIRCLE_BRANCH}
           echo "hello jobA1 inner 1" > a1_inner1.txt
           echo "hello jobA1 inner 2" > a1_inner2.txt
       - persist_to_workspace:
           root: .
           paths:
-            - ccc
+            - ${CIRCLE_BRANCH}
       - run:
           name: Remove .git dir
           command: rm -rf .git
