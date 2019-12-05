@@ -35,14 +35,14 @@ jobs:
           paths:
             - bbb/a1.txt
       - run: |
-          mkdir ${CIRCLE_BRANCH}
-          cd ${CIRCLE_BRANCH}
+          mkdir ccc
+          cd ccc
           echo "hello jobA1 inner 1" > a1_inner1.txt
           echo "hello jobA1 inner 2" > a1_inner2.txt
       - persist_to_workspace:
           root: .
           paths:
-            - ${CIRCLE_BRANCH}
+            - ccc
       - run:
           name: Remove .git dir
           command: rm -rf .git
@@ -56,9 +56,14 @@ jobs:
     steps:
       - checkout
       - run: |
-          pwd
-          cd ~
-          ls -l
+          mkdir ccc
+          cd ccc
+          echo "hello jobA2 inner 1" > a2_inner1.txt
+          echo "hello jobA2 inner 2" > a2_inner2.txt
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ccc
 
   jobB:
     <<: *android_config
