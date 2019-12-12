@@ -27,7 +27,7 @@ jobs:
           name: Background command
           command: |
             echo "Started Background command"
-            sleep 10
+            sleep 5
             echo "Finished Background command"
           background: true
       - run: pwd
