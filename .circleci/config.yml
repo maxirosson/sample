@@ -30,7 +30,7 @@ jobs:
             sleep 5
             echo "Finished Background command"
           background: true
-      - run: pwd
+      - run: sleep 8
       - run: |
           mkdir aaa
           cd aaa
