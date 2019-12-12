@@ -23,6 +23,13 @@ jobs:
     <<: *android_config
     steps:
       - checkout
+      - run:
+          name: Background command
+          command: |
+            echo "Started Background command"
+            sleep 10
+            echo "Finished Background command"
+          background: true
       - run: pwd
       - run: |
           mkdir aaa
