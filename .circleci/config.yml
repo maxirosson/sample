@@ -23,14 +23,6 @@ jobs:
     <<: *android_config
     steps:
       - checkout
-      - run:
-          name: Background command
-          command: |
-            echo "Started Background command"
-            sleep 5
-            echo "Finished Background command"
-          background: true
-      - run: sleep 8
       - run: |
           mkdir aaa
           cd aaa
@@ -50,13 +42,6 @@ jobs:
           root: .
           paths:
             - ccc
-      - run:
-          name: Remove .git dir
-          command: rm -rf .git
-      - persist_to_workspace:
-          root: *workspace
-          paths:
-            - .
 
   jobA2:
     <<: *android_config
