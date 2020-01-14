@@ -64,15 +64,6 @@ jobs:
           root: .
           paths:
             - ccc
-      - run: |
-          mkdir build
-          cd build
-          echo "class1.java" > class1.java
-          echo "class3.java" > class3.java
-      - persist_to_workspace:
-          root: .
-          paths:
-            - build
 
   jobB:
     <<: *android_config
@@ -91,12 +82,22 @@ jobs:
           root: ./workspace
           paths:
             - bbb/b1.txt
+      - run: |
+          mkdir build
+          cd build
+          echo "class1.java" > class1.java
+          echo "class3.java" > class3.java
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
 
   jobC:
     <<: *android_config
     steps:
       - attach_workspace:
           at: ./workspace
+      - run: find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"
       - run: cat ./workspace/bbb/a1.txt
       - run: cat ./workspace/bbb/b1.txt
 
