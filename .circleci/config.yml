@@ -42,7 +42,15 @@ jobs:
           root: .
           paths:
             - ccc
-
+      - run: |
+          mkdir build
+          cd build
+          echo "class1.java" > class1.java
+          echo "class2.java" > class2.java
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
   jobA2:
     <<: *android_config
     steps:
@@ -56,6 +64,15 @@ jobs:
           root: .
           paths:
             - ccc
+      - run: |
+          mkdir build
+          cd build
+          echo "class1.java" > class1.java
+          echo "class3.java" > class3.java
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
 
   jobB:
     <<: *android_config
