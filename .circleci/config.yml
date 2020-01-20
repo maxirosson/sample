@@ -107,6 +107,7 @@ jobs:
       - run: cat ./workspace/bbb/b1.txt
 
   mytestjob:
+    <<: *android_config
     steps:
       - checkout
       - run: echo "my test job"
