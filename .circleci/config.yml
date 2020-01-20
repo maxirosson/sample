@@ -124,7 +124,7 @@ workflows:
       - jobC:
           requires:
             - jobB
-    integration_tests:
-      when: << pipeline.parameters.run_integration_tests >>
-      jobs:
-        - mytestjob
+  integration_tests:
+    when: << pipeline.parameters.run_integration_tests >>
+    jobs:
+      - mytestjob
