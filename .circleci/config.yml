@@ -1,6 +1,11 @@
-version: 2
+version: 2.1
 
 references:
+
+  parameters:
+    run_integration_tests:
+      type: boolean
+      default: false
 
   ## Workspace
 
@@ -101,8 +106,12 @@ jobs:
       - run: cat ./workspace/bbb/a1.txt
       - run: cat ./workspace/bbb/b1.txt
 
+  mytestjob:
+    steps:
+      - checkout
+      - run: echo "my test job"
+
 workflows:
-  version: 2
   commit:
     jobs:
       - jobA1
@@ -114,3 +123,7 @@ workflows:
       - jobC:
           requires:
             - jobB
+    integration_tests:
+      when: << pipeline.parameters.run_integration_tests >>
+      jobs:
+        - mytestjob
