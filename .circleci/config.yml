@@ -31,11 +31,13 @@ jobs:
 
   jobA1:
     <<: *android_config
-    environment:
-      B: BJob
-      C: CJob
     steps:
       - checkout
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export B=BJob" >> $BASH_ENV
+            echo "export C=CJob" >> $BASH_ENV
       - run: |
           echo $A
           echo $B
