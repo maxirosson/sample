@@ -27,7 +27,20 @@ references:
       A: a
       B: b
 
+  android_config_large: &android_config_large
+    <<: *android_config
+    environment:
+      C: c
+
 jobs:
+
+  jobA0:
+    <<: *android_config_large
+    steps:
+      - checkout
+      - run:
+          command: |
+            echo $c
 
   jobA1:
     <<: *android_config
@@ -130,6 +143,7 @@ workflows:
   commit:
     unless: << pipeline.parameters.api >>
     jobs:
+      - jobA0
       - jobA1
       - jobA2
       - jobB:
