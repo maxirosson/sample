@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: "com.releaseshub.gradle.plugin"
 
+version = "1.2.3"
+
 buildscript {
 	repositories {
 		jcenter()
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.5.2'
+		classpath 'com.android.tools.build:gradle:3.5.3'
 		classpath("com.releaseshub:releases-hub-gradle-plugin:1.2.0-SNAPSHOT")
 	}
 }
@@ -26,6 +28,12 @@ android {
 		minSdkVersion 21
 		versionCode 1
 		versionName "1"
+	}
+
+	buildTypes {
+		debug {
+			testCoverageEnabled true
+		}
 	}
 }
 

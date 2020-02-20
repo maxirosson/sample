@@ -1,0 +1,11 @@
+sonarqube {
+	properties {
+		property "sonar.projectKey", "maxirosson_sample"
+		property "sonar.organization", "maxirosson"
+		property "sonar.host.url", "https://sonarcloud.io"
+		property "sonar.projectName", "sample"
+
+		property "sonar.java.coveragePlugin", "jacoco"
+		property "sonar.login", "dc4b27eda8dc8f53d86f7159cd04d8954d88dd28"
+	}
+}

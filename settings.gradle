@@ -6,5 +6,5 @@
 //}
 
 include ':app'
-include ':desktop_app'
+//include ':desktop_app'
 include ':core'
