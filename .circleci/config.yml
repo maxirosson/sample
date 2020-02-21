@@ -32,6 +32,9 @@ references:
     environment:
       C: c
 
+  orbs:
+    sonarcloud: sonarsource/sonarcloud@1.0.0
+
 jobs:
 
   jobA0:
@@ -142,14 +145,17 @@ jobs:
   sonar:
     <<: *android_config
     steps:
-      - attach_workspace:
-          at: ./workspace
-      - run: ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube
+      - checkout
+      ##- run: ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube -Psonar.pullrequest.branch=${CIRCLE_BRANCH} --stacktrace
+      - run: ./gradlew clean testDebugUnitTest jacocoTestReport --stacktrace
+      - sonarcloud/scan
 
 workflows:
   commit:
     unless: << pipeline.parameters.api >>
     jobs:
+      - sonar:
+          context: sonarcloud
       - jobA0
       - jobA1
       - jobA2
