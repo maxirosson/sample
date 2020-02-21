@@ -43,6 +43,12 @@ apply from: './sonarqube.gradle'
 
 subprojects {
 
+	apply plugin: "jacoco"
+
+	jacoco {
+		toolVersion = "0.8.5"
+	}
+
 	task jacocoTestReport(type: JacocoReport, dependsOn: ['createDebugCoverageReport']) {
 		group = "Reporting"
 		description = "Generate combined unit and instrumentation test Jacoco coverage report. Assumes that the tests have already been run."

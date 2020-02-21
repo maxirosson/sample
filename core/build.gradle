@@ -1,5 +1,4 @@
 apply plugin: "com.android.library"
-apply plugin: "jacoco"
 
 dependencies {
 	testCompile 'junit:junit:4.0'
@@ -39,11 +38,6 @@ android {
 			includeAndroidResources = true
 		}
 	}
-}
-
-jacoco {
-	toolVersion = "0.8.5"
-	reportsDir = file("$buildDir/jacoco")
 }
 
 android {
