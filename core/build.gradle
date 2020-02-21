@@ -47,23 +47,3 @@ android {
 		}
 	}
 }
-
-tasks.withType(Test) {
-	jacoco.includeNoLocationClasses = true
-}
-
-// The unit test task is creating a jacoco.exec file in the project dir, along with the jacoco/testDebugUnitTest.exec file.
-// So, move it into the build dir so it doesn't pollute things and gets properly cleaned up on a clean.
-// Note that for some modules the coverage results are in the jacoco.exec, and for others they are in testDebugUnitTest.exec.
-// See https://issuetracker.google.com/issues/67872367
-task moveJacocoExec {
-	group = "Reporting"
-	description = "Move jacoco.exec file created by unit tests into the build directory."
-
-	doLast {
-		ant.move file: "jacoco.exec", todir: "${buildDir}/jacoco", failonerror: false
-	}
-}
-project.afterEvaluate { project ->
-	project.tasks."testDebugUnitTest".finalizedBy moveJacocoExec
-}
