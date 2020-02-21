@@ -32,8 +32,8 @@ references:
     environment:
       C: c
 
-  orbs:
-    sonarcloud: sonarsource/sonarcloud@1.0.0
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.0
 
 jobs:
 
