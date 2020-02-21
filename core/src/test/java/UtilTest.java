@@ -9,5 +9,6 @@ public class UtilTest {
 	@Test
 	public void utilTest() {
 		assertEquals("Name 1", Util.getName());
+		assertEquals("Name 2", new Util().getName2());
 	}
 }
