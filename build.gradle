@@ -48,7 +48,6 @@ sonarqube {
 		property "sonar.projectName", "sample"
 
 		property "sonar.java.coveragePlugin", "jacoco"
-		property "sonar.login", "dc4b27eda8dc8f53d86f7159cd04d8954d88dd28"
 
 		property "sonar.coverage.jacoco.xmlReportPaths", fileTree(dir: project.projectDir, includes: ['**/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'])
 	}

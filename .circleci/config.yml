@@ -139,6 +139,13 @@ jobs:
       - checkout
       - run: echo "my test job"
 
+  sonar:
+    <<: *android_config
+    steps:
+      - attach_workspace:
+          at: ./workspace
+      - run: ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube
+
 workflows:
   commit:
     unless: << pipeline.parameters.api >>
