@@ -146,7 +146,7 @@ jobs:
     <<: *android_config
     steps:
       - checkout
-      ##- run: ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube -Psonar.pullrequest.branch=${CIRCLE_BRANCH} --stacktrace
+      #- run: ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube -Psonar.pullrequest.branch=${CIRCLE_BRANCH} --stacktrace
       - run: ./gradlew clean testDebugUnitTest jacocoTestReport --stacktrace
       - sonarcloud/scan
 
