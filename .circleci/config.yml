@@ -154,8 +154,7 @@ workflows:
   commit:
     unless: << pipeline.parameters.api >>
     jobs:
-      - sonar:
-          context: sonarcloud
+      - sonar
       - jobA0
       - jobA1
       - jobA2
