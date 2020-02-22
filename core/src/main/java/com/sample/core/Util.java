@@ -8,8 +8,4 @@ public class Util {
 	public String getName2() {
 		return "Name 2";
 	}
-
-	public String getName3() {
-		return "Name 3";
-	}
 }
