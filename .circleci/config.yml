@@ -145,7 +145,7 @@ jobs:
       - checkout
       - run: |
           prId=$(echo $CIRCLE_PULL_REQUEST | rev | cut -d '/' -f 1 | rev)
-          ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube -Psonar.pullrequest.branch=${CIRCLE_BRANCH} -Psonar.pullrequest.key=${prId} --stacktrace
+          ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube -PIS_PR=true -PPR_BANCH=${CIRCLE_BRANCH} -PPR_ID=${prId} --stacktrace
 
 workflows:
   commit:
