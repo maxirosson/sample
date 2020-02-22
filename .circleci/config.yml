@@ -26,7 +26,6 @@ references:
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
       A: a
       B: b
-      sonar.projectKey: maxirosson_sample
 
   android_config_large: &android_config_large
     <<: *android_config
