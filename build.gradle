@@ -51,11 +51,12 @@ sonarqube {
 
 		property "sonar.coverage.jacoco.xmlReportPaths", fileTree(dir: project.projectDir, includes: ['**/reports/jacoco/jacocoTestReport/jacocoTestReport.xml'])
 
-		if (project.ext.get('PR_ID') != null) {
+		String prId = project.ext.get('PR_ID')
+		if (prId != null && !prId.isEmpty()) {
 			property "sonar.pullrequest.github.repository", "maxirosson/sample"
 			property "sonar.pullrequest.provider", "GitHub"
 			//property "sonar.login", "dc4b27eda8dc8f53d86f7159cd04d8954d88dd28"
-			property "sonar.pullrequest.key", project.ext.get('PR_ID')
+			property "sonar.pullrequest.key", prId
 		}
 	}
 }

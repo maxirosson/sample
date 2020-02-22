@@ -144,8 +144,8 @@ jobs:
     steps:
       - checkout
       - run: |
-          prId=$(echo $CIRCLE_PULL_REQUEST | rev | cut -d '/' -f 1 | rev)
           ./gradlew clean testDebugUnitTest jacocoTestReport --stacktrace
+          prId=$(echo $CIRCLE_PULL_REQUEST | rev | cut -d '/' -f 1 | rev)
           ./gradlew sonarqube -PPR_ID=${prId} --stacktrace
 
 workflows:
