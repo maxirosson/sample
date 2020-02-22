@@ -20,7 +20,7 @@ references:
   android_config: &android_config
     working_directory: *workspace
     docker:
-      - image: circleci/openjdk:8-jdk
+      - image: circleci/android:api-29
     environment:
       JVM_OPTS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
@@ -139,10 +139,20 @@ jobs:
       - checkout
       - run: echo "my test job"
 
+  sonar:
+    <<: *android_config
+    steps:
+      - checkout
+      - run: |
+          prId=$(echo $CIRCLE_PULL_REQUEST | rev | cut -d '/' -f 1 | rev)
+          ./gradlew clean testDebugUnitTest jacocoTestReport --stacktrace
+          ./gradlew sonarqube -PPR_ID=${prId} --stacktrace
+
 workflows:
   commit:
     unless: << pipeline.parameters.api >>
     jobs:
+      - sonar
       - jobA0
       - jobA1
       - jobA2
