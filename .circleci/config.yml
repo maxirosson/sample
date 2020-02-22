@@ -144,7 +144,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          prId=${echo '$CIRCLE_PULL_REQUEST ' | rev | cut -d '/' -f 1 | rev}
+          prId=$(echo $CIRCLE_PULL_REQUEST | rev | cut -d '/' -f 1 | rev)
           ./gradlew clean testDebugUnitTest jacocoTestReport sonarqube -Psonar.pullrequest.branch=${CIRCLE_BRANCH} -Psonar.pullrequest.key=${prId} --stacktrace
 
 workflows:
