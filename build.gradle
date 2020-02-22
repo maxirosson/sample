@@ -59,7 +59,7 @@ sonarqube {
 			property "sonar.pullrequest.base", "master"
 
 			//property "sonar.login", "dc4b27eda8dc8f53d86f7159cd04d8954d88dd28"
-			property "sonar.pullrequest.branch", project.ext.get('PR_BANCH')
+			property "sonar.pullrequest.branch", project.ext.get('PR_BRANCH')
 			property "sonar.pullrequest.key", project.ext.get('PR_ID')
 		}
 	}
