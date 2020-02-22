@@ -10,6 +10,5 @@ public class UtilTest {
 	public void utilTest() {
 		assertEquals("Name 1", Util.getName());
 		assertEquals("Name 2", new Util().getName2());
-		assertEquals("Name 3", new Util().getName3());
 	}
 }
