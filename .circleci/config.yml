@@ -40,7 +40,7 @@ references:
 
   store_DDD_artifacts: &store_DDD_artifacts
     store_artifacts:
-      path: ./$MODULE_NAME/d.txt
+      path: ./DDD/d.txt
       destination: $MODULE_NAME.txt
 
 jobs:
