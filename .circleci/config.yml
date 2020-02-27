@@ -32,7 +32,33 @@ references:
     environment:
       C: c
 
+  persist_DDD_to_workspace: &persist_DDD_to_workspace
+    persist_to_workspace:
+      root: ~/
+      paths:
+        - job_workspace/$MODULE_NAME/d.txt
+
+  store_DDD_artifacts: &store_DDD_artifacts
+    store_artifacts:
+      path: ./$MODULE_NAME/d.txt
+      destination: $MODULE_NAME.txt
+
 jobs:
+
+  jobDDD:
+    <<: *android_config
+    steps:
+      - checkout
+      - run:
+          name: Setup Environment Variables
+          command: |
+            echo "export MODULE_NAME=DDD" >> $BASH_ENV
+      - run: |
+          mkdir DDD
+          cd DDD
+          echo "hello jobDDD" > d.txt
+      - *persist_DDD_to_workspace
+      - *store_DDD_artifacts
 
   jobA0:
     <<: *android_config_large
@@ -152,6 +178,7 @@ workflows:
   commit:
     unless: << pipeline.parameters.api >>
     jobs:
+      - jobDDD
       - sonar
       - jobA0
       - jobA1
