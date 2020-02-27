@@ -36,7 +36,7 @@ references:
     persist_to_workspace:
       root: ~/
       paths:
-        - job_workspace/$MODULE_NAME/d.txt
+        - ~/job_workspace/$MODULE_NAME/d.txt
 
   store_DDD_artifacts: &store_DDD_artifacts
     store_artifacts:
@@ -57,6 +57,7 @@ jobs:
           mkdir DDD
           cd DDD
           echo "hello jobDDD" > d.txt
+          pwd
       - *persist_DDD_to_workspace
       - *store_DDD_artifacts
 
