@@ -36,7 +36,7 @@ references:
     persist_to_workspace:
       root: ~/
       paths:
-        - ./$MODULE_NAME/d.txt
+        - ./job_workspace/$MODULE_NAME/d.txt
 
   store_DDD_artifacts: &store_DDD_artifacts
     store_artifacts:
