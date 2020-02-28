@@ -4,7 +4,10 @@ parameters:
   api:
     type: boolean
     default: false
-  run_integration_tests:
+  integration_tests:
+    type: boolean
+    default: false
+  cron_workflow:
     type: boolean
     default: false
 
