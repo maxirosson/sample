@@ -192,10 +192,11 @@ workflows:
           requires:
             - jobB
   integration_tests:
-    when: << pipeline.parameters.run_integration_tests >>
+    when: << pipeline.parameters.integration_tests >>
     jobs:
       - mytestjob
   cron_workflow:
+    when: << pipeline.parameters.cron_workflow >>
     triggers:
       - schedule:
           cron: "0 0 * * 3" ## Weekly on Wednesday at 0 AM
