@@ -79,7 +79,7 @@ jobs:
             echo $c
 
   jobA1:
-    <<: *android_config
+    executor: android_executor
     steps:
       - checkout
       - run: |
