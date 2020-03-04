@@ -183,8 +183,8 @@ workflows:
   commit:
     unless: << pipeline.parameters.api >>
     jobs:
-      - jobDDD
-      - sonar
+      #- jobDDD
+      #- sonar
       - jobA0
       - jobA1
       - jobA2
@@ -199,16 +199,6 @@ workflows:
     when: << pipeline.parameters.integration_tests >>
     jobs:
       - mytestjob
-  cron_workflow:
-    triggers:
-      - schedule:
-          cron: "0 0 * * 3" ## Weekly on Wednesday at 0 AM
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - jobDDD
   non_cron_workflow:
     when: << pipeline.parameters.cron_workflow >>
     jobs:
