@@ -46,6 +46,12 @@ references:
       path: ./DDD/d.txt
       destination: $MODULE_NAME.txt
 
+executors:
+  android_executor:
+    <<: *android_config
+    environment:
+      B: b2
+
 jobs:
 
   jobDDD:
@@ -76,11 +82,6 @@ jobs:
     <<: *android_config
     steps:
       - checkout
-      - run:
-          name: Setup Environment Variables
-          command: |
-            echo "export B=BJob" >> $BASH_ENV
-            echo "export C=CJob" >> $BASH_ENV
       - run: |
           echo $A
           echo $B
