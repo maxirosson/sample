@@ -23,10 +23,12 @@ buildscript {
 	repositories {
 		jcenter()
 		google()
+		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.6.0'
 		classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
+		classpath(BuildLibs.RELEASES_HUB_GRADLE_PLUGIN)
 	}
 }
 
