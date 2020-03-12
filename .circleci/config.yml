@@ -191,7 +191,6 @@ workflows:
     jobs:
       #- jobDDD
       #- sonar
-      - upgradeDependencies
       - jobA0
       - jobA1
       - jobA2
