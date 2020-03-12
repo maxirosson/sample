@@ -170,6 +170,12 @@ jobs:
       - checkout
       - run: echo "my test job"
 
+  upgradeDependencies:
+    <<: *android_config
+    steps:
+      - checkout
+      - run: ./gradlew upgradeDependencies -PpullRequestEnabled=true
+
   sonar:
     <<: *android_config
     steps:
@@ -185,6 +191,7 @@ workflows:
     jobs:
       #- jobDDD
       #- sonar
+      - upgradeDependencies
       - jobA0
       - jobA1
       - jobA2
