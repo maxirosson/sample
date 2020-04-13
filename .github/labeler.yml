@@ -3,3 +3,11 @@ module/core:
 
 module/app:
   - app/**/*
+
+S:
+  size-below: 10
+M:
+  size-above: 9
+  size-below: 100
+L:
+  size-above: 100
