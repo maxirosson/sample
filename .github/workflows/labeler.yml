@@ -15,4 +15,4 @@ jobs:
       # https://github.com/marketplace/actions/condition-based-pull-request-labeler
       - uses: srvaroa/labeler@master
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
