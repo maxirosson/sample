@@ -10,7 +10,7 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.5.3'
+		classpath 'com.android.tools.build:gradle:3.6.2'
 		classpath "org.jacoco:org.jacoco.core:0.8.5"
 	}
 }
@@ -40,10 +40,3 @@ android {
 	}
 }
 
-android {
-	buildTypes {
-		debug {
-			testCoverageEnabled true
-		}
-	}
-}
