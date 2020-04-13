@@ -1,6 +1,3 @@
-resolve-conflict:
-  mergeable: false
-
 S:
   size-below: 10
 M:
