@@ -9,8 +9,8 @@ buildscript {
 		google()
 	}
 	dependencies {
-		classpath 'com.android.tools.build:gradle:3.6.0'
-		classpath("com.releaseshub:releases-hub-gradle-plugin:1.2.0-SNAPSHOT")
+		classpath 'com.android.tools.build:gradle:3.6.2'
+		classpath("com.releaseshub:releases-hub-gradle-plugin:1.4.2")
 	}
 }
 
