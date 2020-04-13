@@ -19,7 +19,7 @@ android {
 
 	compileSdkVersion = 29
 
-	// http://developer.android.com/tools/revisions/build-tools.html
+	//.. http://developer.android.com/tools/revisions/build-tools.html
 	buildToolsVersion = "29.0.2"
 
 	defaultConfig {
