@@ -3,3 +3,17 @@ module/core:
 
 module/app:
   - app/**/*
+
+circleci:
+  - .circleci/**/*
+
+github:
+  - .github/**/*
+
+gradle:
+  - gradle/**/*
+  - ./**/*.gradle
+  - ./**/*.gradle.kts
+  - buildSrc/**/*
+  - build-scripts/**/*
+  - gradle.properties
