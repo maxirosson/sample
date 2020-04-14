@@ -21,15 +21,18 @@ gradle:
   - build-scripts/**/*
   - gradle.properties
   
-java1:
-  - */**/src/main/java/*
+#java1:
+#  - */**/src/main/java/*
 
-java2:
-  - */**/src/main/java/*.java
+#java2:
+#  - */**/src/main/java/*.java
   
 java3:
   - **/src/main/java/*
   
-java4:
-  - ./**/src/main/java/*
+#java4:
+#  - ./**/src/main/java/*
+  
+java5:
+  - **/src/main/java/*.java
 
