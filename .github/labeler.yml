@@ -19,4 +19,4 @@ gradle:
   - gradle.properties
   
 java:
-  - **/src/main/java/*
+  - */**/src/main/java/*
