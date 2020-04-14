@@ -3,7 +3,10 @@ module/core:
 
 module/app:
   - app/**/*
-
+  
+module/desktop:
+  - desktop_app/**/*
+  
 circleci:
   - .circleci/**/*
 
@@ -18,5 +21,17 @@ gradle:
   - build-scripts/**/*
   - gradle.properties
   
-java:
+java1:
   - */**/src/main/java/*
+
+java2:
+  - */**/src/main/java/*.java
+  
+java3:
+  - **/src/main/java/*.java
+  
+java4:
+  - ./**/src/main/java/*.java
+  
+java5:
+  - */src/main/java/*.java
