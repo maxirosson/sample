@@ -27,11 +27,11 @@ gradle:
 #java2:
 #  - */**/src/main/java/*.java
   
-java3:
-  - **/src/main/java/*
+#java3:
+#  - **/src/main/java/*
   
-#java4:
-#  - ./**/src/main/java/*
+java4:
+  - ./**/src/main/java/*
   
 #java5:
 #  - **/src/main/java/*.java
