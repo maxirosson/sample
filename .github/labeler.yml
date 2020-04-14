@@ -31,7 +31,7 @@ gradle:
 #  - **/src/main/java/*
   
 java4:
-  - ./**/src/main/java/*
+  - /**/src/main/java/*
   
 #java5:
 #  - **/src/main/java/*.java
