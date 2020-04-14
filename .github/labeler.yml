@@ -17,3 +17,6 @@ gradle:
   - buildSrc/**/*
   - build-scripts/**/*
   - gradle.properties
+  
+java:
+  - ./**/src/main/java/*
