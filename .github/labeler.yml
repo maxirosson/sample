@@ -4,6 +4,9 @@ module/core:
 module/app:
   - app/**/*
 
+module/desktop:
+  - desktop_app/**/*
+  
 circleci:
   - .circleci/**/*
 
@@ -19,4 +22,4 @@ gradle:
   - gradle.properties
   
 java:
-  - */**/src/main/java/*
+  - */**/src/main/java/*.java
