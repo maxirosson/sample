@@ -4,6 +4,11 @@
 			"name": "example",
 			"colour": "#00ff00",
 			"description": "Example label"
+		},
+		"example2": {
+			"name": "example2",
+			"colour": "#00ff00",
+			"description": "Example 2 label"
 		}
 	},
 	"pr": {
@@ -13,6 +18,15 @@
 				{
 					"type": "filesMatch",
 					"glob": "**/src/main/java/*"
+				}
+			]
+		},
+		"example2": {
+			"requires": 1,
+			"conditions": [
+				{
+					"type": "filesMatch",
+					"glob": "desktop_app/src/main/java/Main.java"
 				}
 			]
 		}
