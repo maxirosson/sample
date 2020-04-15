@@ -15,21 +15,11 @@ github:
 
 gradle:
   - gradle/**/*
-  - */**/*.gradle
-  - */**/*.gradle.kts
+  - \**/*.gradle
+  - \**/*.gradle.kts
   - buildSrc/**/*
   - build-scripts/**/*
   - gradle.properties
   
-java1:
-  - */**/src/main/java/*
-
-java2:
-  - */**/src/main/java/*.java
-  
 java3:
-  - **/src/main/java/*
-  
-java4:
-  - ./**/src/main/java/*
-
+  - \**/src/main/java/*

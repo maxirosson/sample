@@ -7,18 +7,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-#      # https://github.com/marketplace/actions/labeler
-#      - uses: actions/labeler@v3-preview
-#        with:
-#          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-#
-#      # https://github.com/marketplace/actions/condition-based-pull-request-labeler
-#      - uses: srvaroa/labeler@master
-#        with:
-#          config_path: .github/condition_based_labeler.yml
-#        env:
-#          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      - uses: actions/checkout@v2
-      - uses: IvanFon/super-labeler-action@v1
+      # https://github.com/marketplace/actions/labeler
+      - uses: actions/labeler@v3-preview
         with:
-          github-token: '${{ secrets.GITHUB_TOKEN }}'
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # https://github.com/marketplace/actions/condition-based-pull-request-labeler
+      - uses: srvaroa/labeler@master
+        with:
+          config_path: .github/condition_based_labeler.yml
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
