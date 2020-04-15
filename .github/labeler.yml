@@ -22,4 +22,4 @@ gradle:
   - gradle.properties
   
 java3:
-  - \**/src/main/java/*
+  - \\**/src/main/java/*
