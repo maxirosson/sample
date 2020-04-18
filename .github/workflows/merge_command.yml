@@ -6,13 +6,17 @@ jobs:
   merge-command:
 
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
       - name: Merge command
-        # https://github.com/marketplace/actions/automatic-merge
-        uses: lots0logs/gh-action-auto-merge@1.0.0
+        # https://github.com/marketplace/actions/pull-request-merge-command
+        uses: Goobles/gh-actions-merge-command@v1
+        with:
+          allow_ff: false
+          user_name: GitHub Actions
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
