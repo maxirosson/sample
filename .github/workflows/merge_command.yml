@@ -12,10 +12,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Merge command
-        # https://github.com/marketplace/actions/pull-request-merge-command
-        uses: Goobles/gh-actions-merge-command@v1
-        with:
-          allow_ff: false
-          user_name: GitHub Actions
+        # https://github.com/marketplace/actions/automatic-merge
+        uses: lots0logs/gh-action-auto-merge@1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
