@@ -90,7 +90,13 @@ jobs:
   jobA1:
     executor: android_executor
     steps:
+      - run:
+          name: Uptime
+          command: uptime
       - checkout
+      - run:
+          name: Uptime
+          command: uptime
       - run: |
           echo $A
           echo $B
@@ -123,6 +129,9 @@ jobs:
           root: .
           paths:
             - build
+      - run:
+          name: Uptime
+          command: uptime
   jobA2:
     <<: *android_config
     steps:
