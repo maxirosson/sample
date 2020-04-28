@@ -209,7 +209,10 @@ workflows:
     jobs:
       #- jobDDD
       #- sonar
-      - jobA0
+      - jobA0:
+          pre-steps:
+            - run:
+                command: echo "Hello"
       - jobA1
       - jobA2
       - jobB:
