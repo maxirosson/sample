@@ -57,6 +57,9 @@ jobs:
   jobDDD:
     <<: *android_config
     steps:
+      - run:
+          name: Uptime
+          command: uptime
       - checkout
       - run:
           name: Setup Environment Variables
@@ -69,6 +72,9 @@ jobs:
           pwd
       - *persist_DDD_to_workspace
       - *store_DDD_artifacts
+      - run:
+          name: Uptime
+          command: uptime
 
   jobA0:
     <<: *android_config_large
@@ -77,6 +83,9 @@ jobs:
       - run:
           command: |
             echo $c
+      - run:
+          name: Uptime
+          command: uptime
 
   jobA1:
     executor: android_executor
