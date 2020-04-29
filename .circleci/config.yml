@@ -83,7 +83,7 @@ jobs:
       - run:
           command: |
             echo $c
-            if [[ ${CIRCLE_BRANCH} =~ ^release.*$" ]]
+            if [[ ${CIRCLE_BRANCH} =~ "^release.*$" ]]
             then
               echo "si"
             fi
