@@ -16,7 +16,7 @@ references:
   ## Workspace
 
   workspace: &workspace
-    ~/job_workspace
+    ~/project
 
   ## Docker image configurations
 
@@ -208,21 +208,35 @@ jobs:
     steps:
       - checkout
       - run: |
-          echo "hello"
+          mkdir aaa
+          cd aaa
+          echo "job a1" > a1.txt
 
   b1:
     <<: *android_config
     steps:
       - checkout
       - run: |
-          echo "hello"
+          mkdir aaa
+          cd aaa
+          echo "job b1" > b1.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/aaa
 
   c1:
     <<: *android_config
     steps:
       - checkout
       - run: |
-          echo "hello"
+          mkdir aaa
+          cd aaa
+          echo "job c1" > c1.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/aaa
 
   b2:
     <<: *android_config
@@ -230,14 +244,21 @@ jobs:
       - checkout
       - run: |
           echo "hello"
+      - attach_workspace:
+          at: ~/
+      - run: |
+          cd aaa
+          cat b1.txt
 
   c2:
     <<: *android_config
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/
       - run: |
-          echo "hello"
-
+          cd aaa
+          cat c1.txt
   d:
     <<: *android_config
     steps:
