@@ -211,6 +211,10 @@ jobs:
           mkdir aaa
           cd aaa
           echo "job a1" > a1.txt
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - project/aaa
 
   b1:
     <<: *android_config
@@ -265,6 +269,13 @@ jobs:
       - checkout
       - run: |
           echo "hello"
+      - attach_workspace:
+          at: ~/
+      - run: |
+          cd aaa
+          cat a1.txt
+          cat b1.txt
+          cat c1.txt
 
 workflows:
   commit:
