@@ -8,6 +8,7 @@
   - giacomuzzi
 'scripts':
   - giacomuzzi
+  - maxirosson
 '*.gradle':
   - giacomuzzi
 '*.gradle.kts':
@@ -16,4 +17,5 @@
   - giacomuzzi
 '**/.gitignore':
   - giacomuzzi
+  - maxirosson
 
