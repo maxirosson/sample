@@ -1,0 +1,19 @@
+'.circleci/**':
+  - maxirosson
+'.github/**':
+  - giacomuzzi
+'build-scripts/**':
+  - maxirosson
+'buildSrc/**':
+  - maxirosson
+'scripts':
+  - maxirosson
+'*.gradle':
+  - maxirosson
+'*.gradle.kts':
+  - maxirosson
+'.gitignore':
+  - maxirosson
+'**/.gitignore':
+  - maxirosson
+
