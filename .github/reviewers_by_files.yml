@@ -3,17 +3,17 @@
 '.github/**':
   - giacomuzzi
 'build-scripts/**':
-  - maxirosson
+  - giacomuzzi
 'buildSrc/**':
-  - maxirosson
+  - giacomuzzi
 'scripts':
-  - maxirosson
+  - giacomuzzi
 '*.gradle':
-  - maxirosson
+  - giacomuzzi
 '*.gradle.kts':
-  - maxirosson
+  - giacomuzzi
 '.gitignore':
-  - maxirosson
+  - giacomuzzi
 '**/.gitignore':
-  - maxirosson
+  - giacomuzzi
 
