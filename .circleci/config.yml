@@ -209,6 +209,9 @@ jobs:
       a:
         type: string
         default: "Hello World"
+      b:
+        type: boolean
+        default: true
     steps:
       - checkout
       - when:
@@ -218,6 +221,10 @@ jobs:
               - equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run: echo "Hello master"
+      - when:
+          condition: << parameters.b >>
+          steps:
+            - run: echo "Hello master OLD"
       - run: |
           echo << pipeline.git.branch >>
           echo << parameters.a >>
