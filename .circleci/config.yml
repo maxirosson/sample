@@ -286,7 +286,7 @@ workflows:
   commit:
     jobs:
       - a1:
-          a: 1
+          a: "1"
       - b1
       - c1
       - b2:
