@@ -205,9 +205,14 @@ jobs:
 
   a1:
     <<: *android_config
+    parameters:
+      a:
+        type: string
+        default: "Hello World"
     steps:
       - checkout
       - run: |
+          echo << parameters.a >>
           mkdir aaa
           cd aaa
           echo "job a1" > a1.txt
@@ -280,7 +285,8 @@ jobs:
 workflows:
   commit:
     jobs:
-      - a1
+      - a1:
+          a: 1
       - b1
       - c1
       - b2:
