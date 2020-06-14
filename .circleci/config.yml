@@ -212,7 +212,8 @@ jobs:
     steps:
       - checkout
       - when:
-          equal: [ master, << pipeline.git.branch >> ]
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run: echo "Hello master"
       - run: |
