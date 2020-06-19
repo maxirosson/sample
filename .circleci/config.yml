@@ -217,96 +217,96 @@ jobs:
               - equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run: echo "Hello master"
-      - run: |
-          echo << pipeline.git.branch >>
-          echo << parameters.a >>
-          mkdir aaa
-          cd aaa
-          echo "job a1" > a1.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/aaa
+#      - run: |
+#          echo << pipeline.git.branch >>
+#          echo << parameters.a >>
+#          mkdir aaa
+#          cd aaa
+#          echo "job a1" > a1.txt
+#      - persist_to_workspace:
+#          root: ~/
+#          paths:
+#            - project/aaa
 
-  b1:
-    <<: *android_config
-    steps:
-      - checkout
-      - run: |
-          mkdir aaa
-          cd aaa
-          echo "job b1" > b1.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/aaa
-
-  c1:
-    <<: *android_config
-    steps:
-      - checkout
-      - run: |
-          mkdir aaa
-          cd aaa
-          echo "job c1" > c1.txt
-      - persist_to_workspace:
-          root: ~/
-          paths:
-            - project/aaa
-
-  b2:
-    <<: *android_config
-    steps:
-      - checkout
-      - run: |
-          echo "hello"
-      - attach_workspace:
-          at: ~/
-      - run: |
-          cd aaa
-          cat b1.txt
-
-  c2:
-    <<: *android_config
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/
-      - run: |
-          cd aaa
-          cat c1.txt
-  d:
-    <<: *android_config
-    steps:
-      - checkout
-      - run: |
-          echo "hello"
-      - attach_workspace:
-          at: ~/
-      - run: |
-          cd aaa
-          cat a1.txt
-          cat b1.txt
-          cat c1.txt
+#  b1:
+#    <<: *android_config
+#    steps:
+#      - checkout
+#      - run: |
+#          mkdir aaa
+#          cd aaa
+#          echo "job b1" > b1.txt
+#      - persist_to_workspace:
+#          root: ~/
+#          paths:
+#            - project/aaa
+#
+#  c1:
+#    <<: *android_config
+#    steps:
+#      - checkout
+#      - run: |
+#          mkdir aaa
+#          cd aaa
+#          echo "job c1" > c1.txt
+#      - persist_to_workspace:
+#          root: ~/
+#          paths:
+#            - project/aaa
+#
+#  b2:
+#    <<: *android_config
+#    steps:
+#      - checkout
+#      - run: |
+#          echo "hello"
+#      - attach_workspace:
+#          at: ~/
+#      - run: |
+#          cd aaa
+#          cat b1.txt
+#
+#  c2:
+#    <<: *android_config
+#    steps:
+#      - checkout
+#      - attach_workspace:
+#          at: ~/
+#      - run: |
+#          cd aaa
+#          cat c1.txt
+#  d:
+#    <<: *android_config
+#    steps:
+#      - checkout
+#      - run: |
+#          echo "hello"
+#      - attach_workspace:
+#          at: ~/
+#      - run: |
+#          cd aaa
+#          cat a1.txt
+#          cat b1.txt
+#          cat c1.txt
 
 workflows:
   commit:
     jobs:
       - a1:
           a: "1"
-      - b1
-      - c1
-      - b2:
-          requires:
-            - b1
-      - c2:
-          requires:
-            - c1
-      - d:
-          requires:
-            - a1
-            - b2
-            - c2
+#      - b1
+#      - c1
+#      - b2:
+#          requires:
+#            - b1
+#      - c2:
+#          requires:
+#            - c1
+#      - d:
+#          requires:
+#            - a1
+#            - b2
+#            - c2
 
 
 #  commit:
