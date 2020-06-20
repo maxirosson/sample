@@ -212,7 +212,8 @@ jobs:
     steps:
       - checkout
       - unless:
-          condition: [ master, << pipeline.git.branch >> ]
+          condition:
+            equal: [ master, << pipeline.git.branch >> ]
           steps:
             - run: echo "Hello non master"
 #      - run: |
