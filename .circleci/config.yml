@@ -211,10 +211,8 @@ jobs:
         default: "Hello World"
     steps:
       - checkout
-      - when:
-          condition:
-            not:
-              - equal: [ master, << pipeline.git.branch >> ]
+      - unless:
+          condition: [ master, << pipeline.git.branch >> ]
           steps:
             - run: echo "Hello non master"
 #      - run: |
