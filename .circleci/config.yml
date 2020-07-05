@@ -211,20 +211,20 @@ jobs:
         default: "Hello World"
     steps:
       - checkout
-      - run:
-          name: Save fatal error logs
-          command: |
-            modules_file="buildSrc/src/main/kotlin/Module.kt"
-            destination="fatal-errors"
-            while read line
-            do
-              module=$(echo "$line" | sed -nE "s/.+\(\"(.+)\"\)[,;]/\1/p")
-              module="${module//://}" #replace ':' by "/"
-              if [[ ! -z "$module" ]]; then
-                mkdir -p "${destination}/${module}"
-                cp ${module}/*.log "${destination}/${module}/" 2>/dev/null || :
-              fi
-            done < "$modules_file"
+#      - run:
+#          name: Save fatal error logs
+#          command: |
+#            modules_file="buildSrc/src/main/kotlin/Module.kt"
+#            destination="fatal-errors"
+#            while read line
+#            do
+#              module=$(echo "$line" | sed -nE "s/.+\(\"(.+)\"\)[,;]/\1/p")
+#              module="${module//://}" #replace ':' by "/"
+#              if [[ ! -z "$module" ]]; then
+#                mkdir -p "${destination}/${module}"
+#                cp ${module}/*.log "${destination}/${module}/" 2>/dev/null || :
+#              fi
+#            done < "$modules_file"
       - store_artifacts:
           path: ./fatal-errors
           destination: fatal-errors
