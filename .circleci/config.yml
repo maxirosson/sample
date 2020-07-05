@@ -211,9 +211,12 @@ jobs:
         default: "Hello World"
     steps:
       - checkout
-      - echo "log1" > app/a.log
-      - echo "log2" > core/a.log
-      - echo "log3" > core/b.log
+      - run:
+          name: Create logs
+          command: |
+            echo "log1" > app/a.log
+            echo "log2" > core/a.log
+            echo "log3" > core/b.log
       - run:
           name: Save fatal error logs
           command: |
