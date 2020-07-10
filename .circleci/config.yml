@@ -30,9 +30,9 @@ jobs:
     executor: android_executor
     steps:
       - checkout
-      - sample-orb/greet:
-          greeting: "Hello World !!!"
       - sample-orb/verify_gradle_wrapper
+      - sample-orb/inspect_gradle_cache
+      - sample-orb/clean_gradle_cache
 
 
 workflows:
