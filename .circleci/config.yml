@@ -30,6 +30,9 @@ jobs:
     executor: android_executor
     steps:
       - checkout
+      - run:
+          name: "Assemble app"
+          command: ./gradlew assemble
       - sample-orb/verify_gradle_wrapper
       - run:
           name: "Gradle version"
