@@ -31,15 +31,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Assemble app"
-          command: ./gradlew assemble
-#      - sample-orb/verify_gradle_wrapper
-#      - run:
-#          name: "Gradle version"
-#          command: ./gradlew --version
-#      - sample-orb/inspect_gradle_cache
-#      - sample-orb/clean_gradle_cache
-
+          name: "Sample"
+          command: |
+            gpg --version
+            gpg --gen-key
+            gpg --list-keys
 
 workflows:
   commit:
