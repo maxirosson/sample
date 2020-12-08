@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo2.png)
+![](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo3.png)
 
 # Bye Bye Jetifier Gradle Plugin
 Gradle Plugin to verify if you can keep Android Jetifier disabled
