@@ -101,3 +101,6 @@ Donations are greatly appreciated. You can help us to pay for our domain and thi
 * [Medium](http://medium.dipien.com)
 * [Blog](http://blog.dipien.com)
 
+[![Dipien](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo3.png)](http://medium.dipien.com/)
+
+
