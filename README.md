@@ -1,4 +1,4 @@
-![](.github/logo2.png)
+![](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo2.png)
 
 
 # Sample
