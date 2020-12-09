@@ -1,4 +1,4 @@
-[![Dipien](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo3.png)](http://medium.dipien.com/)
+[![Dipien](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo4.png)](http://medium.dipien.com/)
 
 # Bye Bye Jetifier Gradle Plugin
 Gradle Plugin to verify if you can keep Android Jetifier disabled
@@ -100,7 +100,4 @@ Donations are greatly appreciated. You can help us to pay for our domain and thi
 * [Twitter](http://twitter.dipien.com)
 * [Medium](http://medium.dipien.com)
 * [Blog](http://blog.dipien.com)
-
-[![Dipien](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo3.png)](http://medium.dipien.com/)
-
 
