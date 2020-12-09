@@ -1,5 +1,4 @@
 [![Dipien](https://raw.githubusercontent.com/maxirosson/sample/master/.github/logo4.png)](http://medium.dipien.com/)
-
 # Bye Bye Jetifier Gradle Plugin
 Gradle Plugin to verify if you can keep Android Jetifier disabled
 
