@@ -27,12 +27,6 @@ jobs:
     executor: android_executor
     steps:
       - checkout
-      - run:
-          name: "Sample"
-          command: |
-            gpg --version
-            gpg --gen-key
-            gpg --list-keys
 
 workflows:
   commit:
