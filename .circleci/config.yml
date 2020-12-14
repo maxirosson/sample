@@ -34,9 +34,12 @@ commands:
       path:
         type: string
         default: ""
+      workflowId:
+        type: string
+        default: ""
     steps:
       - save_cache:
-          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-$CIRCLE_WORKFLOW_ID
+          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-<< parameters.workflowId >>
           paths:
             - << parameters.path >>
   restore_job_cache:
@@ -44,10 +47,13 @@ commands:
       key:
         type: string
         default: ""
+      workflowId:
+        type: string
+        default: ""
     steps:
       - restore_cache:
           keys:
-            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-$CIRCLE_WORKFLOW_ID
+            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-<< parameters.workflowId >>
             - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>
 
 jobs:
@@ -62,11 +68,11 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
-            echo "Workflow id: << workflow.id >>"
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
       - save_job_cache:
+          workflowId: $CIRCLE_WORKFLOW_ID
           path: a1.txt
   a2:
     executor: android_executor
@@ -82,6 +88,7 @@ jobs:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a2.txt
       - save_job_cache:
+          workflowId: $CIRCLE_WORKFLOW_ID
           path: a2.txt
 
 workflows:
