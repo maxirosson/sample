@@ -36,7 +36,7 @@ commands:
         default: ""
     steps:
       - save_cache:
-          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.workflow }}
+          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.CIRCLE_WORKFLOW_ID }}
           paths:
             - << parameters.path >>
   restore_job_cache:
@@ -47,7 +47,7 @@ commands:
     steps:
       - restore_cache:
           keys:
-            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.workflow }}
+            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.CIRCLE_WORKFLOW_ID }}
             - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>
 
 jobs:
