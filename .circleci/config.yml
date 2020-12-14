@@ -66,7 +66,7 @@ jobs:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
       - save_job_cache:
-          paths: a1.txt
+          path: a1.txt
   a2:
     executor: android_executor
     steps:
@@ -81,7 +81,7 @@ jobs:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a2.txt
       - save_job_cache:
-          paths: a2.txt
+          path: a2.txt
 
 workflows:
   commit:
