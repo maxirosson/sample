@@ -68,6 +68,7 @@ jobs:
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
       - save_job_cache:
           path: a1.txt
+          key: "a"
           
   b1:
     executor: android_executor
@@ -85,12 +86,14 @@ jobs:
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > b1.txt
       - save_job_cache:
           path: b1.txt
+          key: "b"
 
   a2:
     executor: android_executor
     steps:
       - checkout
-      - restore_job_cache
+      - restore_job_cache:
+          key: "a"
       - run:
           name: "Read cache"
           command: cat a1.txt
@@ -100,10 +103,11 @@ jobs:
     executor: android_executor
     steps:
       - checkout
-      - restore_job_cache
+      - restore_job_cache:
+          key: "b"
       - run:
           name: "Read cache"
-          command: cat b2.txt
+          command: cat b1.txt
           
 workflows:
   commit:
