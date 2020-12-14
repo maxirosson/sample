@@ -68,7 +68,8 @@ jobs:
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
       - save_job_cache:
           path: a1.txt
-  a2:
+          
+  b1:
     executor: android_executor
     steps:
       - checkout
@@ -81,12 +82,37 @@ jobs:
             echo "Workflow id: {{ .Environment.workflow }}"
       - run:
           name: "Create artifact to cache"
-          command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a2.txt
+          command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > b1.txt
       - save_job_cache:
-          path: a2.txt
+          path: b1.txt
 
+  a2:
+    executor: android_executor
+    steps:
+      - checkout
+      - restore_job_cache
+      - run:
+          name: "Read cache"
+          command: cat a1.txt
+
+
+  b2:
+    executor: android_executor
+    steps:
+      - checkout
+      - restore_job_cache
+      - run:
+          name: "Read cache"
+          command: cat b2.txt
+          
 workflows:
   commit:
     jobs:
       - a1
-      - a2
+      - a2:
+          requires:
+            - a1
+      - b1
+      - b2:
+          requires:
+            - b1
