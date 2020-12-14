@@ -33,6 +33,7 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
+            asasd
   a2:
     executor: android_executor
     steps:
