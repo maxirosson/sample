@@ -27,8 +27,25 @@ jobs:
     executor: android_executor
     steps:
       - checkout
+      - run:
+          name: "Vars"
+          command: |
+            echo "Pipeline id: << pipeline.id >>"
+            echo "Pipeline number: << pipeline.number >>"
+            echo "Workspace id: $CIRCLE_WORKFLOW_ID"
+  a2:
+    executor: android_executor
+    steps:
+      - checkout
+      - run:
+          name: "Vars"
+          command: |
+            echo "Pipeline id: << pipeline.id >>"
+            echo "Pipeline number: << pipeline.number >>"
+            echo "Workspace id: $CIRCLE_WORKFLOW_ID"
 
 workflows:
   commit:
     jobs:
       - a1
+      - a2
