@@ -34,12 +34,9 @@ commands:
       path:
         type: string
         default: ""
-      workflowId:
-        type: string
-        default: ""
     steps:
       - save_cache:
-          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-<< parameters.workflowId >>
+          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.workflow }}
           paths:
             - << parameters.path >>
   restore_job_cache:
@@ -47,13 +44,10 @@ commands:
       key:
         type: string
         default: ""
-      workflowId:
-        type: string
-        default: ""
     steps:
       - restore_cache:
           keys:
-            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-<< parameters.workflowId >>
+            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.workflow }}
             - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>
 
 jobs:
@@ -68,11 +62,11 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
+            echo "Workflow id: {{ .Environment.workflow }}"
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
       - save_job_cache:
-          workflowId: $CIRCLE_WORKFLOW_ID
           path: a1.txt
   a2:
     executor: android_executor
@@ -84,11 +78,11 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
+            echo "Workflow id: {{ .Environment.workflow }}"
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a2.txt
       - save_job_cache:
-          workflowId: $CIRCLE_WORKFLOW_ID
           path: a2.txt
 
 workflows:
