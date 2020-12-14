@@ -4,6 +4,10 @@ parameters:
   api:
     type: boolean
     default: false
+    
+ jobCacheKey:
+    type: string
+    default: v1-jobcache
 
 references:
 
@@ -20,6 +24,31 @@ executors:
     environment:
       JVM_OPTS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
+      
+commands:
+  save_job_cache:
+    parameters:
+      key:
+        type: string
+        default: ""
+      path:
+        type: string
+        default: ""
+    steps:
+      - save_cache:
+          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-$CIRCLE_WORKFLOW_ID
+          paths:
+            - << parameters.path >>
+  restore_job_cache:
+    parameters:
+      key:
+        type: string
+        default: ""
+    steps:
+      - restore_cache:
+          keys:
+            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-$CIRCLE_WORKFLOW_ID
+            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>
 
 jobs:
 
@@ -34,6 +63,7 @@ jobs:
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
             asasd
+      - save_job_cache
   a2:
     executor: android_executor
     steps:
@@ -44,6 +74,7 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
+      - save_job_cache
 
 workflows:
   commit:
