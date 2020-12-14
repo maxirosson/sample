@@ -5,7 +5,7 @@ parameters:
     type: boolean
     default: false
     
- jobCacheKey:
+  jobCacheKey:
     type: string
     default: v1-jobcache
 
