@@ -62,8 +62,11 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
-            asasd
-      - save_job_cache
+      - run:
+          name: "Create artifact to cache"
+          command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
+      - save_job_cache:
+          paths: a1.txt
   a2:
     executor: android_executor
     steps:
@@ -74,7 +77,11 @@ jobs:
             echo "Pipeline id: << pipeline.id >>"
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
-      - save_job_cache
+      - run:
+          name: "Create artifact to cache"
+          command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a2.txt
+      - save_job_cache:
+          paths: a2.txt
 
 workflows:
   commit:
