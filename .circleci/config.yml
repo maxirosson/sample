@@ -81,7 +81,7 @@ jobs:
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
             echo "Workflow id: {{ .Environment.workflow }}"
-            echo "Test"
+            echo "Test 1"
             echo "Test 2"
             echo "Test 3"
             exit 1
