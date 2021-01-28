@@ -81,6 +81,7 @@ jobs:
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
             echo "Workflow id: {{ .Environment.workflow }}"
+            echo "Test"
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > b1.txt
