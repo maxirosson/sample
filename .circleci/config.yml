@@ -84,6 +84,7 @@ jobs:
             echo "Test"
             echo "Test 2"
             echo "Test 3"
+            exit 1
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > b1.txt
