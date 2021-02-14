@@ -72,24 +72,6 @@ jobs:
       - save_job_cache:
           path: a1.txt
           key: "a"
-          
-  b1:
-    executor: android_executor
-    steps:
-      - checkout
-      - run:
-          name: "Vars"
-          command: |
-            echo "Pipeline id: << pipeline.id >>"
-            echo "Pipeline number: << pipeline.number >>"
-            echo "Workflow id: $CIRCLE_WORKFLOW_ID"
-            echo "Workflow id: {{ .Environment.workflow }}"
-      - run:
-          name: "Create artifact to cache"
-          command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > b1.txt
-      - save_job_cache:
-          path: b1.txt
-          key: "b"
 
   a2:
     executor: android_executor
@@ -98,19 +80,8 @@ jobs:
       - restore_job_cache:
           key: "a"
       - run:
-          name: "Read cache"
-          command: cat a1.txt
-
-
-  b2:
-    executor: android_executor
-    steps:
-      - checkout
-      - restore_job_cache:
-          key: "b"
-      - run:
-          name: "Read cache"
-          command: cat b1.txt
+          name: "Sleep"
+          command: sleep 30
           
   publish:
     executor: android_executor
@@ -118,6 +89,9 @@ jobs:
       - checkout
       - queue/until_front_of_line:
           only-on-branch: master
+      - run:
+          name: "Publish"
+          command: echo "Publishing"
           
 workflows:
   commit:
@@ -126,11 +100,6 @@ workflows:
       - a2:
           requires:
             - a1
-      - b1
-      - b2:
-          requires:
-            - b1
       - publish:
           requires:
             - a2
-            - b2
