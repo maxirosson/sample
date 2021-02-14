@@ -25,7 +25,7 @@ executors:
       JVM_OPTS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
 orbs:
-  # https://circleci.com/developer/orbs/orb/eddiewebb/queue
+  # https://circleci.com/developer/orbs/orb/eddiewebb/queue .
   queue: eddiewebb/queue@1.5.0
   
 commands:
