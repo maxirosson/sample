@@ -81,7 +81,7 @@ jobs:
           key: "a"
       - run:
           name: "Sleep"
-          command: sleep 30
+          command: sleep 0
           
   publish:
     executor: android_executor
