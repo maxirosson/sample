@@ -81,13 +81,13 @@ jobs:
           key: "a"
       - run:
           name: "Sleep"
-          command: sleep 0
+          command: sleep 30
           
   publish:
     executor: android_executor
     steps:
       - checkout
-      - queue/until_front_of_line:
+      - queue/block_workflow:
           only-on-branch: master
       - run:
           name: "Publish"
