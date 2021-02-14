@@ -24,7 +24,10 @@ executors:
     environment:
       JVM_OPTS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
-      
+orbs:
+  # https://circleci.com/developer/orbs/orb/eddiewebb/queue
+  queue: eddiewebb/queue@1.5.0
+  
 commands:
   save_job_cache:
     parameters:
@@ -109,6 +112,13 @@ jobs:
           name: "Read cache"
           command: cat b1.txt
           
+  publish:
+    executor: android_executor
+    steps:
+      - checkout
+      - queue/until_front_of_line:
+          only-on-branch: master
+          
 workflows:
   commit:
     jobs:
@@ -120,3 +130,7 @@ workflows:
       - b2:
           requires:
             - b1
+      - publish:
+          requires:
+            - a2
+            - b2
