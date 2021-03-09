@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: "com.releaseshub.gradle.plugin"
 
 version = "1.2.3"
 
@@ -10,7 +9,6 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:3.6.2'
-		classpath("com.releaseshub:releases-hub-gradle-plugin:1.4.2")
 	}
 }
 
@@ -35,12 +33,4 @@ android {
 			testCoverageEnabled true
 		}
 	}
-}
-
-releasesHub {
-	gitHubRepositoryOwner = "maxirosson"
-	gitHubRepositoryName = "sample"
-	pullRequestsMax = 2
-	pullRequestReviewers = ["jdroid-ci"]
-	pullRequestLabels = ["dependencies"]
 }
