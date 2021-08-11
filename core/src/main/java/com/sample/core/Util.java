@@ -2,7 +2,7 @@ package com.sample.core;
 
 public class Util {
 	public static String getName() {
-		return "Name 1";
+		return "Name 1.";
 	}
 
 	public String getName2() {
