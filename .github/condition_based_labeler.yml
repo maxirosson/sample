@@ -9,5 +9,5 @@ labels:
     size-above: 100
   - label: "github"
     files:
-      - ".github/**/*"
+      - ".github/.*"
   
