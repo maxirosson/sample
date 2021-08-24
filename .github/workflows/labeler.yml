@@ -7,11 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # https://github.com/marketplace/actions/labeler
-      - uses: actions/labeler@v3
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-
       # https://github.com/marketplace/actions/pr-labeler-based-on-multiple-rules
       - uses: srvaroa/labeler@v0.8
         with:

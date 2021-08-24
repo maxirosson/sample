@@ -1,7 +1,13 @@
-S:
-  size-below: 10
-M:
-  size-above: 9
-  size-below: 100
-L:
-  size-above: 100
+version: 1
+labels:
+  - label: "S"
+    size-below: 10
+  - label: "M"
+    size-above: 9
+    size-below: 100
+  - label: "L"
+    size-above: 100
+  - label: "github"
+    files:
+      - ".github/**/*"
+  
