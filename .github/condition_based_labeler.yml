@@ -7,7 +7,33 @@ labels:
     size-below: 100
   - label: "L"
     size-above: 100
+    
+    # https://github.com/google/re2/wiki/Syntax
+  - label: "circleci"
+    files:
+      - ".circleci/.*"
   - label: "github"
     files:
       - ".github/.*"
-  
+  - label: "gradle"
+    files:
+      - "gradle/.*"
+      - ".gradle"
+      - "**/*.gradle.kts"
+      - "buildSrc/.*"
+      - "gradle.properties"
+      - "gradlew"
+  - label: "idea"
+    files:
+      - ".idea/.*"
+  - label: "git"
+    files:
+      - ".gitignore"
+      - ".gitattributes"
+  - label: "wiki"
+    files:
+      - "wiki/.*"
+      - "README.md"
+  - label: "core"
+    files:
+      - "core/.*"
