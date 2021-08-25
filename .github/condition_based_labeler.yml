@@ -18,8 +18,8 @@ labels:
   - label: "gradle"
     files:
       - "gradle/.*"
-      - ".gradle"
-      - "**/*.gradle.kts"
+      - ".*.gradle"
+      - ".*.gradle.kts"
       - "buildSrc/.*"
       - "gradle.properties"
       - "gradlew"
