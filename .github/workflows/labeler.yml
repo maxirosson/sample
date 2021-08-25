@@ -10,7 +10,7 @@ jobs:
       # https://github.com/marketplace/actions/pr-labeler-based-on-multiple-rules
       - uses: srvaroa/labeler@v0.8
         with:
-          config_path: .github/condition_based_labeler.yml
+          config_path: .github/labeler.yml
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
