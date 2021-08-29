@@ -5,6 +5,10 @@ parameters:
     type: boolean
     default: false
     
+  upgradeDependencies:
+    type: boolean
+    default: false
+    
   jobCacheKey:
     type: string
     default: v1-jobcache
@@ -94,6 +98,14 @@ jobs:
           name: "Publish"
           command: echo "Publishing"
           
+  upgradeDependencies:
+    executor: android_executor
+    steps:
+      - checkout
+      - run:
+          name: Upgrade Dependencies
+          command: ./gradlew upgradeDependencies --stacktrace
+          
 workflows:
   commit:
     jobs:
@@ -104,3 +116,8 @@ workflows:
       - publish:
           requires:
             - a2
+            
+  upgradeDependencies:
+    when: << pipeline.parameters.upgradeDependencies >>
+    jobs:
+      - upgradeDependencies
