@@ -15,7 +15,7 @@ buildscript {
 dependencies {
 	implementation project(':core')
 	implementation("com.google.firebase:firebase-analytics:1.0.0")
-	implementation("com.google.firebase:firebase-messaging:17.0.0")
+	implementation("com.google.firebase:firebase-messaging:17.6.0")
 	implementation("com.google.firebase:firebase-perf:1.0.0")
 }
 
