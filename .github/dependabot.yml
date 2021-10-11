@@ -11,5 +11,5 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      time: "22:38"
+      time: "07:00"
       timezone: "America/Argentina/Buenos_Aires"
