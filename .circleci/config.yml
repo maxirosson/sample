@@ -34,14 +34,8 @@ jobs:
             echo "Pipeline number: << pipeline.number >>"
             echo "Workflow id: $CIRCLE_WORKFLOW_ID"
             echo "Workflow id: {{ .Environment.workflow }}"
-      - run:
-          name: "Create artifact to cache"
-          command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
           
 workflows:
   commit:
     jobs:
       - a1:
-      - publish:
-          requires:
-            - a2
