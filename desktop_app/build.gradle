@@ -3,7 +3,7 @@ mainClassName = 'Main'
 
 dependencies {
 	compile project(':core')
-	compile "com.google.guava:guava:18.0"
+	compile "com.google.guava:guava:31.0.1-jre"
 	testCompile 'junit:junit:4.0'
 }
 
