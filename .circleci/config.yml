@@ -28,34 +28,6 @@ executors:
     environment:
       JVM_OPTS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.caching=true -Dorg.gradle.parallel=true -Dorg.gradle.jvmargs="-Xmx4g -Xms1g"
-orbs:
-  # https://circleci.com/developer/orbs/orb/eddiewebb/queue .
-  queue: eddiewebb/queue@1.5.0
-  
-commands:
-  save_job_cache:
-    parameters:
-      key:
-        type: string
-        default: ""
-      path:
-        type: string
-        default: ""
-    steps:
-      - save_cache:
-          key: << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-          paths:
-            - << parameters.path >>
-  restore_job_cache:
-    parameters:
-      key:
-        type: string
-        default: ""
-    steps:
-      - restore_cache:
-          keys:
-            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>-{{ .Environment.CIRCLE_WORKFLOW_ID }}
-            - << pipeline.parameters.jobCacheKey >>-<< parameters.key >>-<< pipeline.id >>
 
 jobs:
 
@@ -73,31 +45,7 @@ jobs:
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
-      - save_job_cache:
-          path: a1.txt
-          key: "a"
 
-  a2:
-    executor: android_executor
-    steps:
-      - checkout
-      - restore_job_cache:
-          key: "a"
-      - run:
-          name: "Sleep"
-          command: sleep 0
-          
-  publish:
-    executor: android_executor
-    steps:
-      - checkout
-      - queue/until_front_of_line:
-          block-workflow: true
-          only-on-branch: master
-      - run:
-          name: "Publish"
-          command: echo "Publishing"
-          
   upgradeDependencies:
     executor: android_executor
     steps:
@@ -109,10 +57,7 @@ jobs:
 workflows:
   commit:
     jobs:
-      - a1
-      - a2:
-          requires:
-            - a1
+      - a1:
       - publish:
           requires:
             - a2
