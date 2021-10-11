@@ -4,14 +4,6 @@ parameters:
   api:
     type: boolean
     default: false
-    
-  upgradeDependencies:
-    type: boolean
-    default: false
-    
-  jobCacheKey:
-    type: string
-    default: v1-jobcache
 
 references:
 
@@ -45,14 +37,6 @@ jobs:
       - run:
           name: "Create artifact to cache"
           command: echo "<< pipeline.id >>-$CIRCLE_WORKFLOW_ID" > a1.txt
-
-  upgradeDependencies:
-    executor: android_executor
-    steps:
-      - checkout
-      - run:
-          name: Upgrade Dependencies
-          command: ./gradlew upgradeDependencies --stacktrace
           
 workflows:
   commit:
@@ -61,8 +45,3 @@ workflows:
       - publish:
           requires:
             - a2
-            
-  upgradeDependencies:
-    when: << pipeline.parameters.upgradeDependencies >>
-    jobs:
-      - upgradeDependencies
