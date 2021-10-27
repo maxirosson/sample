@@ -1,7 +1,8 @@
 name: "Upgrade Dependencies"
-on:
-  schedule:
-    - cron: "0 13 * * 3"
+on: push
+#on:
+#  schedule:
+#    - cron: "0 13 * * 3"
 
 jobs:
   upgradeDependencies:
