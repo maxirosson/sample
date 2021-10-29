@@ -7,7 +7,7 @@ enableFeaturePreview("VERSION_CATALOGS")
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            alias("firebase-core").to("com.google.firebase:firebase-core:1.0.0")
+            alias("firebase-core").to("com.google.firebase:firebase-core:20.0.0")
         }
     }
 }
