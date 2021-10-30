@@ -1,5 +1,5 @@
 plugins {
-    id("com.gradle.enterprise").version("3.6")
+    id("com.gradle.enterprise").version("3.7.1")
 }
 
 enableFeaturePreview("VERSION_CATALOGS")
