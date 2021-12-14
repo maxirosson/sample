@@ -44,17 +44,17 @@ android {
 
 apply plugin: "maven-publish"
 
-task("sourcesJar", type: Jar) {
-	classifier = "sources"
-	from(sourceSets.main.allSource)
-}
+//task("sourcesJar", type: Jar) {
+//	classifier = "sources"
+//	from(sourceSets.main.allSource)
+//}
 
 publishing {
-	publications {
-		pluginMaven(MavenPublication) {
-			artifact(sourcesJar)
-		}
-	}
+//	publications {
+//		pluginMaven(MavenPublication) {
+//			artifact(sourcesJar)
+//		}
+//	}
 	repositories {
 		maven {
 			name = "GitHubPackages"
