@@ -44,16 +44,10 @@ android {
 
 apply plugin: "maven-publish"
 
-//task("releaseAndroidSourcesJar", type: Jar) {
-//	archiveClassifier = 'sources'
-//	from android.sourceSets.main.java.srcDirs, android.sourceSets.release.java.srcDirs
-//}
-
 afterEvaluate {
 	publishing {
 		publications {
 			releaseAndroidLibrary(MavenPublication) {
-				//artifact source: "releaseAndroidSourcesJar", classifier: "sources"
 				artifact tasks.getByName("bundleReleaseAar")
 			}
 		}
