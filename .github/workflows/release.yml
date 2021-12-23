@@ -1,20 +1,19 @@
-name: Publish package to GitHub Packages
+name: Publish to Github Packages
 on:
   workflow_dispatch:
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Publish package
+      - name: Publish to Github Packages
         run: ./gradlew :core:publish --stacktrace
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER_NAME: ${{ secrets.GH_USER_NAME }}
+          GH_PACKAGES_UPLOAD_TOKEN: ${{ secrets.GH_PACKAGES_UPLOAD_TOKEN }}
