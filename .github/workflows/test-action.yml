@@ -24,4 +24,4 @@ jobs:
           github_token: ${{ secrets.CI_GITHUB_WRITE_TOKEN }}
           workflow_file_name: main.yml
           ref: master
-          inputs: '{"param1":"${RELEASE_VERSION}"}'
+          inputs: \"{"param1":"${RELEASE_VERSION}"}\"
