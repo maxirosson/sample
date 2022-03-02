@@ -14,6 +14,9 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      - name: Set env
+        run: |
+          echo "RELEASE_VERSION=111" >> $GITHUB_ENV
       - uses: convictional/trigger-workflow-and-wait@v1.5.0
         with:
           owner: maxirosson
@@ -21,4 +24,4 @@ jobs:
           github_token: ${{ secrets.CI_GITHUB_WRITE_TOKEN }}
           workflow_file_name: main.yml
           ref: master
-          inputs: '{"param1":"${GITHUB_REF#refs/*/}"}'
+          inputs: '{"param1":"${RELEASE_VERSION}"}'
