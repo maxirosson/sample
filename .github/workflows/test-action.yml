@@ -18,6 +18,8 @@ jobs:
         run: |
           echo "RELEASE_VERSION=111" >> $GITHUB_ENV
           echo "JSON={"param1":"${RELEASE_VERSION}"}" >> $GITHUB_ENV
+      - name: Get env
+        run: |
           echo ${{ env.JSON }}
       - uses: convictional/trigger-workflow-and-wait@v1.5.0
         with:
