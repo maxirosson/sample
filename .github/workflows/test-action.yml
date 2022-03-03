@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "RELEASE_VERSION=111" >> $GITHUB_ENV
           echo "JSON={"param1":"${RELEASE_VERSION}"}" >> $GITHUB_ENV
-          echo ${JSON}
+          echo ${{ env.JSON }}
       - uses: convictional/trigger-workflow-and-wait@v1.5.0
         with:
           owner: maxirosson
@@ -26,4 +26,4 @@ jobs:
           github_token: ${{ secrets.CI_GITHUB_WRITE_TOKEN }}
           workflow_file_name: main.yml
           ref: master
-          inputs: ${JSON}
+          inputs: ${{ env.JSON }}
