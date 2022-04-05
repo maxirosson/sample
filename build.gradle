@@ -2,18 +2,15 @@ buildscript {
 	repositories {
 		mavenCentral()
 		google()
+		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:7.0.4'
 		classpath(BuildLibs.RELEASES_HUB_GRADLE_PLUGIN)
+		classpath("com.dipien:semantic-version-gradle-plugin:1.0.0-SNAPSHOT")
 	}
 }
 
-plugins {
-	id "com.dipien.byebyejetifier" version "1.1.0"
-	id "com.dipien.gradle.timer" version "3.0.0"
-	//id "com.osacky.doctor" version "0.7.0"
-}
 
 allprojects {
 	repositories {
@@ -26,5 +23,7 @@ allprojects {
 		}
 	}
 }
+version = "1.2.3"
 
+apply plugin: "com.dipien.semantic-version"
 apply plugin: "com.dipien.releaseshub.gradle.plugin"
