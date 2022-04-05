@@ -23,7 +23,7 @@ allprojects {
 		}
 	}
 }
-version = "1.2.3"
+version = "2.0.0"
 
 apply plugin: "com.dipien.semantic-version"
 apply plugin: "com.dipien.releaseshub.gradle.plugin"
