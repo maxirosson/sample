@@ -2,8 +2,8 @@ buildscript {
 	repositories {
 		mavenCentral()
 		google()
-		gradlePluginPortal()
 		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+		maven { url "https://oss.sonatype.org/content/groups/staging/" }
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:7.0.4'
