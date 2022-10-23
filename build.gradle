@@ -2,7 +2,7 @@ buildscript {
 	repositories {
 		mavenCentral()
 		google()
-		gradlePortal()
+		gradlePluginPortal()
 		maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 	}
 	dependencies {
