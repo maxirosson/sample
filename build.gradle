@@ -29,6 +29,3 @@ version = "3.0.0"
 apply plugin: "com.dipien.semantic-version"
 apply plugin: "com.dipien.releaseshub.gradle.plugin"
 
-releasesHub {
-    serverless = true
-}
