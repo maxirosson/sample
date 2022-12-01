@@ -29,7 +29,7 @@ jobs:
           distribution: 'adopt'
           java-version: 11
 
-      - run: ./gradlew incrementVersion --versionIncrementType=${{ github.event.inputs.versionIncrementType }} --versionIncrementBranch=${{ github.event.inputs.versionIncrementBranch }}
+      - run: ./gradlew incrementVersion --versionIncrementType=${{ github.event.inputs.versionIncrementType }} --versionIncrementBranch=${{ github.event.inputs.versionIncrementBranch }} --commitMessagePrefix="[sample prefix] "
         env:
           gitUserEmail: ${{ secrets.GIT_USER_EMAIL }}
           gitUserName: ${{ secrets.GIT_USER_NAME }}
