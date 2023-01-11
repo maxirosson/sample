@@ -45,4 +45,3 @@ jobs:
           branch: "emerge/baseline_profile"
           title: "Updated Baseline Profile"
           body: "Automated changes by Emerge Generate Baseline Profile Github Action"
-"
