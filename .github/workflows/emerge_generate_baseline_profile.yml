@@ -23,19 +23,19 @@ jobs:
 #          EMERGE_API_TOKEN: ${{ secrets.EMERGE_API_TOKEN }}
       - name: Download Baseline Profile
         run: |
-          $URL = ${{ secrets.URL }}
+          $API_URL = ${{ secrets.URL }}
           
           # After 10 minutes, we call Emerge API
           #sleep 10m
-          RESPONSE=$(curl $URL --header "X-API-Token: ${{ secrets.EMERGE_API_TOKEN }}" --fail)
+          RESPONSE=$(curl $API_URL --header "X-API-Token: ${{ secrets.EMERGE_API_TOKEN }}" --fail)
           
           # We get the generated baseline profile url from the API response (url key on the json)
-          URL=$(echo "$RESPONSE" | jq -r ".url")
+          PROFILE_URL=$(echo "$RESPONSE" | jq -r ".url")
           
           # Download the generated baseline profile and store it into src/main/ of your app module
           APP_PROJECT_PATH="app"
           PROFILE_PATH="$APP_PROJECT_PATH/src/main/baseline-profile.txt"
-          curl -o $PROFILE_PATH $URL --fail
+          curl -o $PROFILE_PATH $PROFILE_URL --fail
         env:
           URL: ${{ secrets.URL }}
       # Create a PR with the generated baseline profile, using https://github.com/marketplace/actions/create-pull-request
