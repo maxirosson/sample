@@ -23,7 +23,7 @@ jobs:
 #          EMERGE_API_TOKEN: ${{ secrets.EMERGE_API_TOKEN }}
       - name: Download Baseline Profile
         run: |
-          $API_URL = ${{ secrets.URL }}
+          API_URL = ${{ secrets.URL }}
           
           # After 10 minutes, we call Emerge API
           #sleep 10m
