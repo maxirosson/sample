@@ -48,4 +48,5 @@ jobs:
         with:
           branch: "emerge/baseline_profile"
           title: "Updated Baseline Profile"
+          commit-message: "Updated Baseline Profile"
           body: "Automated changes by Emerge Generate Baseline Profile Github Action"
