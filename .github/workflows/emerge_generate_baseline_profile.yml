@@ -2,6 +2,11 @@ name: Emerge Generate Baseline Profile
 
 on:
   workflow_dispatch:
+    inputs:
+      appProject:
+        description: 'The application module where to add the baseline profile'
+        required: true
+        default: 'app'
 
 jobs:
   generate:
@@ -33,8 +38,7 @@ jobs:
           PROFILE_URL=$(echo "$RESPONSE" | jq -r ".url")
           
           # Download the generated baseline profile and store it into src/main/ of your app module
-          APP_PROJECT_PATH="app"
-          PROFILE_PATH="$APP_PROJECT_PATH/src/main/baseline-profile.txt"
+          PROFILE_PATH="${{ github.event.inputs.appProject }}/src/main/baseline-profile.txt"
           curl -o $PROFILE_PATH $PROFILE_URL --fail
         env:
           URL: ${{ secrets.URL }}
