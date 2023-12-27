@@ -1,0 +1,11 @@
+name: Check Prices
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  arculus:
+    uses: ./.github/workflows/check-prices-template.yml
+    with:
+      wallet-name: bitkey
