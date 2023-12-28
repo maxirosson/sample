@@ -26,5 +26,5 @@ jobs:
       run: pip install requests beautifulsoup4 selenium
 
     - name: Execute script
-      run: python ${{ inputs.wallet-name }}.py
+      run: python .github/workflows/${{ inputs.wallet-name }}.py
   
