@@ -12,7 +12,7 @@ jobs:
          echo "Hello World 1"
   job2:
     runs-on: ubuntu-latest
-    environment: test
+    #environment: test
     needs: job1
     steps:
       - name: Checkout
