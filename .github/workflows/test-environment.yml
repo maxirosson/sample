@@ -26,4 +26,5 @@ jobs:
         working-directory: scripts
       - name: Tweet
         working-directory: scripts
-        run: node twitter.js ${{ secrets.TWITTER_API_KEY }} ${{ secrets.TWITTER_API_KEY_SECRET }} ${{ secrets.TWITTER_ACCESS_TOKEN }} ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
+        #run: node twitter.js ${{ secrets.TWITTER_API_KEY }} ${{ secrets.TWITTER_API_KEY_SECRET }} ${{ secrets.TWITTER_ACCESS_TOKEN }} ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
+        run: node twitterv2.js ${{ secrets.TWITTER_BEARER_TOKEN }} "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
