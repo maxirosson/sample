@@ -12,9 +12,24 @@ jobs:
          echo "Hello World 1"
   job2:
     runs-on: ubuntu-latest
+    env:
+      TWITTER_USER_NAME: ${{ secrets.TWITTER_USER_NAME }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+      TWITTER_API_KEY_SECRET: ${{ secrets.TWITTER_API_KEY_SECRET }}
+      TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
+      DRY_RUN_ENABLED: ${{ github.event.inputs.dryRunEnabled || 'false' }}
     environment: test
     needs: job1
     steps:
-      - name: Echo
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install Python
         run: |
-         echo "Hello World 2"
+          python3 -m venv venv
+          source venv/bin/activate
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+      - name: Run App
+        run: python3 src/main.py
