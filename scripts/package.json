@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "twit": "^2.2.11"
+    "twit": "^2.2.11",
+    "node-fetch": "^3.3.2"
   }
 }
