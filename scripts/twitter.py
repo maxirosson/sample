@@ -4,6 +4,7 @@ from decouple import config
 from tweepy import Tweet
 import tweeps
 import traceback
+import sys
 
 def update_status(text):
     try:
@@ -29,3 +30,11 @@ def update_status(text):
     except Exception:
         traceback.print_exc()
         raise
+
+# Check if a parameter is passed
+if len(sys.argv) > 1:
+    # Access the passed parameter
+    message = sys.argv[1]
+    update_status(message)
+else:
+    print("No parameter passed.")
