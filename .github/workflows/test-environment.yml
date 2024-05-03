@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: test
-      url: ${{ env.URK }}
+      url: "123456"
     needs: job1
     steps:
       - name: Echo
