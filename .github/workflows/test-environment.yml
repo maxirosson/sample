@@ -1,4 +1,4 @@
-name: Emerge Generate Baseline Profile
+name: Test Environment
 
 on:
   workflow_dispatch:
