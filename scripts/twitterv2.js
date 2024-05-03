@@ -1,4 +1,4 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
 const bearerToken = process.argv[2];
 const tweetText = process.argv[3];
