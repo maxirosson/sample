@@ -12,11 +12,25 @@ const T = new Twit({
   access_token_secret: 'YOUR_ACCESS_TOKEN_SECRET',
 });
 
-// Send the tweet
-T.post('statuses/update', { status: tweetText }, (err, data, response) => {
-  if (err) {
-    console.error('Error sending tweet:', err);
-  } else {
+
+// Function to send tweet synchronously
+async function sendTweet(tweetText) {
+  try {
+    // Send the tweet
+    const { data } = await T.post('statuses/update', { status: tweetText });
     console.log('Tweet sent successfully:', data);
+    return data;
+  } catch (error) {
+    console.error('Error sending tweet:', error);
+    throw error; // Throw the error to indicate tweet sending failed
   }
-});
+}
+
+// Call the function and handle errors
+sendTweet(tweetText)
+  .then(() => {
+    process.exit(0); // Exit with success status
+  })
+  .catch((error) => {
+    process.exit(1); // Exit with error status
+  });
