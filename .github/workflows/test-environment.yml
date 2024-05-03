@@ -2,12 +2,7 @@ name: Test Environment
 
 on:
   workflow_dispatch:
-    inputs:
-      dryRunEnabled:
-        description: 'Whether the dry run module is enabled or not'
-        required: true
-        type: boolean
-        default: 'false'
+
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -18,22 +13,22 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     env:
-      TWITTER_USER_NAME: ${{ secrets.TWITTER_USER_NAME }}
       TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
       TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
       TWITTER_API_KEY_SECRET: ${{ secrets.TWITTER_API_KEY_SECRET }}
-      DRY_RUN_ENABLED: ${{ github.event.inputs.dryRunEnabled || 'false' }}
-    environment: test
+    #environment: test
     needs: job1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install Python
-        run: |
-          python3 -m venv venv
-          source venv/bin/activate
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Run App
-        run: python3 scripts/twitter.py "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm install
+        working-directory: scripts
+      - name: Tweet
+        working-directory: scripts
+        run: node twitter.js ${{ secrets.TWITTER_API_KEY }} "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
