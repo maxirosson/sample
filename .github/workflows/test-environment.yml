@@ -10,9 +10,13 @@ jobs:
       - name: Echo
         run: |
          echo "Hello World 1"
+         URL=1234
+         echo "URL=${URL}" >> "$GITHUB_ENV"
   job2:
     runs-on: ubuntu-latest
-    environment: test
+    environment: 
+      name: test
+      url: ${{ env.URK }}
     needs: job1
     steps:
       - name: Echo
