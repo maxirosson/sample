@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
+  job0:
+    uses: ./.github/workflows/template-workflow.yml
   job1:
     runs-on: ubuntu-latest
     steps:
