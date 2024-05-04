@@ -1,4 +1,4 @@
-const fetch = require('node-fetch').default;
+const https = require('https');
 
 const bearerToken = process.argv[2];
 const tweetText = process.argv[3];
@@ -14,29 +14,42 @@ async function sendTweet(tweetText, bearerToken) {
     'text': tweetText
   });
 
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: headers,
-      body: body
+  const options = {
+    method: 'POST',
+    headers: headers
+  };
+
+  return new Promise((resolve, reject) => {
+    const req = https.request(endpoint, options, (res) => {
+      let data = '';
+      res.on('data', (chunk) => {
+        data += chunk;
+      });
+      res.on('end', () => {
+        if (res.statusCode >= 200 && res.statusCode < 300) {
+          console.log('Tweet sent successfully:', data);
+          resolve(data);
+        } else {
+          reject(new Error(`Failed to send tweet: ${data}`));
+        }
+      });
     });
-    const data = await response.json();
-    if (response.ok) {
-      console.log('Tweet sent successfully:', data);
-      return data;
-    } else {
-      throw new Error(data.errors[0].detail);
-    }
-  } catch (error) {
-    console.error('Error sending tweet:', error.message);
-    throw error;
-  }
+
+    req.on('error', (error) => {
+      console.error('Error sending tweet:', error.message);
+      reject(error);
+    });
+
+    req.write(body);
+    req.end();
+  });
 }
 
+// Call the function and handle errors
 sendTweet(tweetText, bearerToken)
   .then(() => {
-    process.exit(0);
+    process.exit(0); // Exit with success status
   })
   .catch((error) => {
-    process.exit(1);
-  });
+    process.exit(1); // Exit with err
+
