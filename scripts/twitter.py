@@ -12,8 +12,10 @@ def update_status(text):
         api_secrets = config("TWITTER_API_KEY_SECRET")
         access_token = config("TWITTER_ACCESS_TOKEN")
         access_secret = config("TWITTER_ACCESS_TOKEN_SECRET")
-
-        client = tweepy.Client(consumer_key=api_key,
+        bearer_token = config("TWITTER_BEARER_TOKEN")
+        
+        client = tweepy.Client(bearer_token=bearer_token,
+                               consumer_key=api_key,
                                consumer_secret=api_secrets,
                                access_token=access_token,
                                access_token_secret=access_secret)
