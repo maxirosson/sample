@@ -15,7 +15,15 @@ jobs:
         run: |
          echo "Hello World 1"
          echo "SAMPLE_VAR=12434" >> "$GITHUB_ENV"
-
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: SAmple
+        working-directory: scripts
+        run: |
+          node sample.js
+          echo ${{ env.VARIABLE1 }}
   job2:
     runs-on: ubuntu-latest
     environment: test
