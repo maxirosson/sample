@@ -2,7 +2,6 @@ from typing import List
 
 from decouple import config
 from tweepy import Tweet
-import tweeps
 import traceback
 import sys
 
@@ -19,14 +18,7 @@ def update_status(text):
                                consumer_secret=api_secrets,
                                access_token=access_token,
                                access_token_secret=access_secret)
-        
-        print("Dry run enabled: " + config("DRY_RUN_ENABLED"))
-        if config("DRY_RUN_ENABLED") == "false":
-            client.create_tweet(text=text)
-            print("Tweet posted:")
-        else:
-            print("Tweet ignored:")
-        
+        client.create_tweet(text=text)
         print(text)
             
     except Exception:
