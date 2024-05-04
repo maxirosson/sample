@@ -11,6 +11,7 @@ jobs:
         run: echo "Template workflow job 1"
   template-job2:
     runs-on: ubuntu-latest
+    needs: template-job1
     steps:
       - name: Step
         run: echo "Template workflow job 2"
