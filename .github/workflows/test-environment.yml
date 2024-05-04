@@ -12,7 +12,7 @@ jobs:
          echo "Hello World 1"
   job2:
     runs-on: ubuntu-latest
-    #environment: test
+    environment: test
     env:
       TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
@@ -23,13 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - name: Install dependencies
-        run: npm install
-        working-directory: scripts
       - name: Install Python
         run: |
           python3 -m venv venv
@@ -41,7 +34,3 @@ jobs:
         working-directory: scripts
         run: python3 twitter.py "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
         
-     # - name: Tweet
-        #working-directory: scripts
-        #run: node twitter.js ${{ secrets.TWITTER_API_KEY }} ${{ secrets.TWITTER_API_KEY_SECRET }} ${{ secrets.TWITTER_ACCESS_TOKEN }} ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }} "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
-        #run: node twitterv2.js ${{ secrets.TWITTER_BEARER_TOKEN }} "When purchasing a hardware wallet, using Bitcoin for payment enhances privacy by minimizing the amount of personal and financial information associated with the transaction."
