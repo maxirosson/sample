@@ -45,11 +45,11 @@ async function sendTweet(tweetText, bearerToken) {
   });
 }
 
-// Call the function and handle errors
 sendTweet(tweetText, bearerToken)
   .then(() => {
-    process.exit(0); // Exit with success status
+    process.exit(0);
   })
   .catch((error) => {
-    process.exit(1); // Exit with err
+    console.error('Failed to send tweet:', error.message);
+    process.exit(1); 
   });
