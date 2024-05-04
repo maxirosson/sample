@@ -3,6 +3,7 @@ from typing import List
 from decouple import config
 from tweepy import Tweet
 import traceback
+import tweepy
 import sys
 
 def update_status(text):
