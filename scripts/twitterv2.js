@@ -52,4 +52,4 @@ sendTweet(tweetText, bearerToken)
   })
   .catch((error) => {
     process.exit(1); // Exit with err
-
+  });
