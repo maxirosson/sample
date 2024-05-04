@@ -10,7 +10,7 @@ jobs:
       - name: Echo
         run: |
          echo "Hello World 1"
-         echo "SAMPLE_VAR=12434" >> "$SAMPLE_VAR"
+         echo "SAMPLE_VAR=12434" >> "$GITHUB_ENV"
 
   job2:
     runs-on: ubuntu-latest
