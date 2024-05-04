@@ -39,7 +39,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Tweet
         working-directory: scripts
-        run: python3 tweet.py
+        run: python3 twitter.py
         
      # - name: Tweet
         #working-directory: scripts
