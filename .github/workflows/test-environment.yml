@@ -5,7 +5,7 @@ on:
 
 jobs:
   jobA:
-    uses: ./.github/workflows/template-workflow.yml
+    uses: ./.github/workflows/templates/template-workflow2.yml
   jobB:
     uses: ./.github/workflows/template-workflow.yml
   job1:
